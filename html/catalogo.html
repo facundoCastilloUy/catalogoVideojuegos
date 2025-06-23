@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Catálogo</title>
+</head>
+
+<body>
+
+
+    <aside id="sidebar">
+        <button id="btn-abrir-cerrar-sidebar">x</button>
+        <h2>Filtros avanzados</h2>
+        <label for="ordenar"></label>
+        <select name="" id="ordenar">
+            <option value="">Selecciona una opcion</option>
+            <option value="recomendados">Recomendados</option>
+            <option value="mas-nuevo-primero">Más nuevos primero</option>
+            <option value="mas-antiguo-primero">Más antiguos primero</option>
+            <option value="nombre-a-z">Nombre A-Z</option>
+            <option value="nombre-z-a">Nombre Z-A</option>
+        </select>
+        <h3>Estado de ánimo</h3>
+        <label><input type="radio" name="estadoAnimo" value="todos" checked> Todos</label>
+        <label><input type="radio" name="estadoAnimo" value="relajado"> Relajado</label>
+        <label><input type="radio" name="estadoAnimo" value="emocional"> Emocional</label>
+        <label><input type="radio" name="estadoAnimo" value="desafiante"> Desafiante</label>
+        <h3>Duración</h3>
+        <label><input type="radio" name="duracion" value="todas" checked> Todas</label>
+        <label><input type="radio" name="duracion" value="corta"> Corta</label>
+        <label><input type="radio" name="duracion" value="media"> Media</label>
+        <label><input type="radio" name="duracion" value="larga"> Larga</label>
+        <h3>Género</h3>
+        <label><input type="radio" name="genero" value="todos" checked> Todos</label>
+        <label><input type="radio" name="genero" value="aventura"> Aventura</label>
+        <label><input type="radio" name="genero" value="puzzle"> Puzzle</label>
+        <label><input type="radio" name="genero" value="accion"> Acción</label>
+    </aside>
+
+
+
+    <script src="../js/data.js"></script>
+    <script src="../js/codigo.js"></script>
+</body>
+
+</html>

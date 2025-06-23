@@ -1,0 +1,19 @@
+/* ---- VARIABLES ---- */
+
+:root {
+
+    /* COLORES */
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: linear-gradient(to bottom, #1d1d1d, #212121, #242424, #282828, #2c2c2c);
+    height: 100vh;
+}

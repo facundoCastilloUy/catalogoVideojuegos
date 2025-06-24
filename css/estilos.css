@@ -13,7 +13,17 @@
 }
 
 
-body {
+/* body {
     background: linear-gradient(to bottom, #1d1d1d, #212121, #242424, #282828, #2c2c2c);
     height: 100vh;
+} */
+
+.material-symbols-rounded {
+    color: black;
+    font-size: 5rem;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24
 }

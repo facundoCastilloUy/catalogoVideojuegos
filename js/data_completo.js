@@ -8,7 +8,7 @@ const juegos = [
         genero: "Simulacion",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/stardew-valley/slide.jpg",
+            imgSlide: "../../imgs/stardew valley/slide.jpg",
             imgCard: "imgs/stardew-valley/card.jpg",
             imgGallery1: "imgs/stardew-valley/1.jpg",
             imgGallery2: "imgs/stardew-valley/2.jpg",
@@ -34,7 +34,7 @@ const juegos = [
         genero: "Plataformas",
         plataformas: ["PC", "Switch", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/celeste/slide.jpg",
+            imgSlide: "../../imgs/celeste/slide.jpg",
             imgCard: "imgs/celeste/card.jpg",
             imgGallery1: "imgs/celeste/1.jpg",
             imgGallery2: "imgs/celeste/2.jpg",
@@ -60,7 +60,7 @@ const juegos = [
         genero: "Aventura",
         plataformas: ["PlayStation", "PC"],
         imagenes: {
-            imgSlide: "imgs/journey/slide.jpg",
+            imgSlide: "../../imgs/journey/slide.jpg",
             imgCard: "imgs/journey/card.jpg",
             imgGallery1: "imgs/journey/1.jpg",
             imgGallery2: "imgs/journey/2.jpg",
@@ -86,7 +86,7 @@ const juegos = [
         genero: "Acción",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/hades/slide.jpg",
+            imgSlide: "../../imgs/hades/slide.jpg",
             imgCard: "imgs/hades/card.jpg",
             imgGallery1: "imgs/hades/1.jpg",
             imgGallery2: "imgs/hades/2.jpg",
@@ -112,7 +112,7 @@ const juegos = [
         genero: "Aventura",
         plataformas: ["PC", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/firewatch/slide.jpg",
+            imgSlide: "../../imgs/firewatch/slide.jpg",
             imgCard: "imgs/firewatch/card.jpg",
             imgGallery1: "imgs/firewatch/1.jpg",
             imgGallery2: "imgs/firewatch/2.jpg",
@@ -138,7 +138,7 @@ const juegos = [
         genero: "Plataformas",
         plataformas: ["PC", "Switch", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/gris/slide.jpg",
+            imgSlide: "../../imgs/gris/slide.jpg",
             imgCard: "imgs/gris/card.jpg",
             imgGallery1: "imgs/gris/1.jpg",
             imgGallery2: "imgs/gris/2.jpg",
@@ -163,7 +163,7 @@ const juegos = [
         genero: "Acción",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/loop-hero/slide.jpg",
+            imgSlide: "../../imgs/loop hero/slide.jpg",
             imgCard: "imgs/loop-hero/card.jpg",
             imgGallery1: "imgs/loop-hero/1.jpg",
             imgGallery2: "imgs/loop-hero/2.jpg",
@@ -188,7 +188,7 @@ const juegos = [
         genero: "Acción",
         plataformas: ["PC", "Mobile"],
         imagenes: {
-            imgSlide: "imgs/vampire-survivors/slide.jpg",
+            imgSlide: "../../imgs/vampire survivors/slide.jpg",
             imgCard: "imgs/vampire-survivors/card.jpg",
             imgGallery1: "imgs/vampire-survivors/1.jpg",
             imgGallery2: "imgs/vampire-survivors/2.jpg",
@@ -213,7 +213,7 @@ const juegos = [
         genero: "Plataformas",
         plataformas: ["PC", "PlayStation", "Switch"],
         imagenes: {
-            imgSlide: "imgs/limbo/slide.jpg",
+            imgSlide: "../../imgs/limbo/slide.jpg",
             imgCard: "imgs/limbo/card.jpg",
             imgGallery1: "imgs/limbo/1.jpg",
             imgGallery2: "imgs/limbo/2.jpg",
@@ -238,7 +238,7 @@ const juegos = [
         genero: "Simulacion",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/spiritfarer/slide.jpg",
+            imgSlide: "../../imgs/spiritfarer/slide.jpg",
             imgCard: "imgs/spiritfarer/card.jpg",
             imgGallery1: "imgs/spiritfarer/1.jpg",
             imgGallery2: "imgs/spiritfarer/2.jpg",
@@ -263,7 +263,7 @@ const juegos = [
         genero: "Puzzle",
         plataformas: ["PC", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/tetris-effect/slide.jpg",
+            imgSlide: "../../imgs/tetris effect/slide.jpg",
             imgCard: "imgs/tetris-effect/card.jpg",
             imgGallery1: "imgs/tetris-effect/1.jpg",
             imgGallery2: "imgs/tetris-effect/2.jpg",
@@ -288,7 +288,7 @@ const juegos = [
         genero: "Puzzle",
         plataformas: ["PC", "Mobile"],
         imagenes: {
-            imgSlide: "imgs/mini-metro/slide.jpg",
+            imgSlide: "../../imgs/mini metro/slide.jpg",
             imgCard: "imgs/mini-metro/card.jpg",
             imgGallery1: "imgs/mini-metro/1.jpg",
             imgGallery2: "imgs/mini-metro/2.jpg",
@@ -313,7 +313,7 @@ const juegos = [
         genero: "Acción",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/slay-the-spire/slide.jpg",
+            imgSlide: "../../imgs/slay the spire/slide.jpg",
             imgCard: "imgs/slay-the-spire/card.jpg",
             imgGallery1: "imgs/slay-the-spire/1.jpg",
             imgGallery2: "imgs/slay-the-spire/2.jpg",
@@ -338,7 +338,7 @@ const juegos = [
         genero: "Aventura",
         plataformas: ["PC", "Switch", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/oxenfree/slide.jpg",
+            imgSlide: "../../imgs/oxenfree/slide.jpg",
             imgCard: "imgs/oxenfree/card.jpg",
             imgGallery1: "imgs/oxenfree/1.jpg",
             imgGallery2: "imgs/oxenfree/2.jpg",
@@ -363,7 +363,7 @@ const juegos = [
         genero: "Acción",
         plataformas: ["PC", "Switch", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/dead-cells/slide.jpg",
+            imgSlide: "../../imgs/dead cells/slide.jpg",
             imgCard: "imgs/dead-cells/card.jpg",
             imgGallery1: "imgs/dead-cells/1.jpg",
             imgGallery2: "imgs/dead-cells/2.jpg",
@@ -388,7 +388,7 @@ const juegos = [
         genero: "Aventura",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/a-short-hike/slide.jpg",
+            imgSlide: "../../imgs/a short hike/slide.jpg",
             imgCard: "imgs/a-short-hike/card.jpg",
             imgGallery1: "imgs/a-short-hike/1.jpg",
             imgGallery2: "imgs/a-short-hike/2.jpg",
@@ -416,7 +416,7 @@ const juegos = [
         genero: "Plataformas",
         plataformas: ["PC", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/inside/slide.jpg",
+            imgSlide: "../../imgs/inside/slide.jpg",
             imgCard: "imgs/inside/card.jpg",
             imgGallery1: "imgs/inside/1.jpg",
             imgGallery2: "imgs/inside/2.jpg",
@@ -444,7 +444,7 @@ const juegos = [
         genero: "Acción",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/hollow-knight/slide.jpg",
+            imgSlide: "../../imgs/hollow knight/slide.jpg",
             imgCard: "imgs/hollow-knight/card.jpg",
             imgGallery1: "imgs/hollow-knight/1.jpg",
             imgGallery2: "imgs/hollow-knight/2.jpg",
@@ -472,7 +472,7 @@ const juegos = [
         genero: "Simulacion",
         plataformas: ["PC", "Switch"],
         imagenes: {
-            imgSlide: "imgs/unpacking/slide.jpg",
+            imgSlide: "../../imgs/unpacking/slide.jpg",
             imgCard: "imgs/unpacking/card.jpg",
             imgGallery1: "imgs/unpacking/1.jpg",
             imgGallery2: "imgs/unpacking/2.jpg",
@@ -500,7 +500,7 @@ const juegos = [
         genero: "Puzzle",
         plataformas: ["PC", "PlayStation"],
         imagenes: {
-            imgSlide: "imgs/the-witness/slide.jpg",
+            imgSlide: "../../imgs/the witness/slide.jpg",
             imgCard: "imgs/the-witness/card.jpg",
             imgGallery1: "imgs/the-witness/1.jpg",
             imgGallery2: "imgs/the-witness/2.jpg",

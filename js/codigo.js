@@ -1,12 +1,9 @@
-// Obtengo un juego aleatorio, evitando que se repita enseguida.
-
-let juegoActual;
 let ultimoIndice = -1;
 
-const obtenerJuegoAleatorio = ()=>{
+const obtenerJuegoAleatorio = (juego) => {
     let nuevoIndice;
 
-    do{
+    do {
         nuevoIndice = Math.floor(Math.random() * juegos.length);
     } while (nuevoIndice === ultimoIndice);
 
@@ -15,29 +12,35 @@ const obtenerJuegoAleatorio = ()=>{
 }
 
 obtenerJuegoAleatorio();
-///////////////////////
 
-// Slider aleatorio
-
-let intervaloSlider;
-
-const mostrarSlide = ()=>{
-    juegoActual = obtenerJuegoAleatorio();
-
+const mostrarSlide = (juego) => {
     const slide = document.querySelector("#slide");
     slide.innerHTML = `
-    <img src="${juegoActual.imagenes.imgSlide}" alt="${juegoActual.nombre}>
-    <div>
-    <h2>${juegoActual.nombre}</h2>
-    <p>${juegoActual.descripcion}<p>
+    <img src="${juego.imagenes.imgSlide}" alt="${juego.nombre}">
+    <div class="slide-info">
+    <h2>${juego.nombre}</h2>
+    <p>${juego.descripcion}</p>
     </div>
     `;
 }
 
-const siguienteSlide = ()=>{
-    mostrarSlide();
-    
+const actualizarSlide = ()=>{
+    const juego = obtenerJuegoAleatorio();
+    console.log(juego)
+    mostrarSlide(juego);
 }
+
+ const iniciarIntervalo = ()=>{
+     intervaloSlide = setInterval(actualizarSlide,5000);
+ }
+
+// iniciarIntervalo();
+
+const siguienteSlide = () => {
+     clearInterval(intervaloSlide);
+     actualizarSlide();
+     iniciarIntervalo();
+ }
 
 const btnSiguienteSlide = document.querySelector("#btn-siguiente-slide");
 btnSiguienteSlide.addEventListener("click", siguienteSlide)

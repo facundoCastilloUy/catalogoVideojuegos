@@ -27,3 +27,12 @@
   'GRAD' 0,
   'opsz' 24
 }
+
+#slide{
+    width: 100vw;
+    height: 50vh;
+}
+
+#slide img{
+    width: 100%;
+}

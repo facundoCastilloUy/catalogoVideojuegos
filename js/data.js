@@ -164,11 +164,11 @@ const juegos = [
         plataformas: ["PC", "Switch"],
         imagenes: {
             imgSlide: "../../imgs/loop hero/slide.jpg",
-            imgCard: "../../imgs/loop-hero/card.jpg",
-            imgGallery1: "../../imgs/loop-hero/1.jpg",
-            imgGallery2: "../../imgs/loop-hero/2.jpg",
-            imgGallery3: "../../imgs/loop-hero/3.jpg",
-            imgGallery4: "../../imgs/loop-hero/4.jpg"
+            imgCard: "../../imgs/loop hero/card.jpg",
+            imgGallery1: "../../imgs/loop hero/1.jpg",
+            imgGallery2: "../../imgs/loop hero/2.jpg",
+            imgGallery3: "../../imgs/loop hero/3.jpg",
+            imgGallery4: "../../imgs/loop hero/4.jpg"
         },
         lanzamiento: 2021,
         estudio: { nombre: "Four Quarters", enlace: "https://fourquarters.team/" },
@@ -189,11 +189,11 @@ const juegos = [
         plataformas: ["PC", "Mobile"],
         imagenes: {
             imgSlide: "../../imgs/vampire survivors/slide.jpg",
-            imgCard: "../../imgs/vampire-survivors/card.jpg",
-            imgGallery1: "../../imgs/vampire-survivors/1.jpg",
-            imgGallery2: "../../imgs/vampire-survivors/2.jpg",
-            imgGallery3: "../../imgs/vampire-survivors/3.jpg",
-            imgGallery4: "../../imgs/vampire-survivors/4.jpg"
+            imgCard: "../../imgs/vampire survivors/card.jpg",
+            imgGallery1: "../../imgs/vampire survivors/1.jpg",
+            imgGallery2: "../../imgs/vampire survivors/2.jpg",
+            imgGallery3: "../../imgs/vampire survivors/3.jpg",
+            imgGallery4: "../../imgs/vampire survivors/4.jpg"
         },
         lanzamiento: 2021,
         estudio: { nombre: "poncle", enlace: "https://poncle.com/" },
@@ -264,11 +264,11 @@ const juegos = [
         plataformas: ["PC", "PlayStation"],
         imagenes: {
             imgSlide: "../../imgs/tetris effect/slide.jpg",
-            imgCard: "../../imgs/tetris-effect/card.jpg",
-            imgGallery1: "../../imgs/tetris-effect/1.jpg",
-            imgGallery2: "../../imgs/tetris-effect/2.jpg",
-            imgGallery3: "../../imgs/tetris-effect/3.jpg",
-            imgGallery4: "../../imgs/tetris-effect/4.jpg"
+            imgCard: "../../imgs/tetris effect/card.jpg",
+            imgGallery1: "../../imgs/tetris effect/1.jpg",
+            imgGallery2: "../../imgs/tetris effect/2.jpg",
+            imgGallery3: "../../imgs/tetris effect/3.jpg",
+            imgGallery4: "../../imgs/tetris effect/4.jpg"
         },
         lanzamiento: 2018,
         estudio: { nombre: "Monstars", enlace: "https://www.enhance-experience.com/tetriseffect/" },
@@ -289,11 +289,11 @@ const juegos = [
         plataformas: ["PC", "Mobile"],
         imagenes: {
             imgSlide: "../../imgs/mini metro/slide.jpg",
-            imgCard: "../../imgs/mini-metro/card.jpg",
-            imgGallery1: "../../imgs/mini-metro/1.jpg",
-            imgGallery2: "../../imgs/mini-metro/2.jpg",
-            imgGallery3: "../../imgs/mini-metro/3.jpg",
-            imgGallery4: "../../imgs/mini-metro/4.jpg"
+            imgCard: "../../imgs/mini metro/card.jpg",
+            imgGallery1: "../../imgs/mini metro/1.jpg",
+            imgGallery2: "../../imgs/mini metro/2.jpg",
+            imgGallery3: "../../imgs/mini metro/3.jpg",
+            imgGallery4: "../../imgs/mini metro/4.jpg"
         },
         lanzamiento: 2015,
         estudio: { nombre: "Dinosaur Polo Club", enlace: "https://dinopoloclub.com/" },
@@ -314,11 +314,11 @@ const juegos = [
         plataformas: ["PC", "Switch"],
         imagenes: {
             imgSlide: "../../imgs/slay the spire/slide.jpg",
-            imgCard: "../../imgs/slay-the-spire/card.jpg",
-            imgGallery1: "../../imgs/slay-the-spire/1.jpg",
-            imgGallery2: "../../imgs/slay-the-spire/2.jpg",
-            imgGallery3: "../../imgs/slay-the-spire/3.jpg",
-            imgGallery4: "../../imgs/slay-the-spire/4.jpg"
+            imgCard: "../../imgs/slay the spire/card.jpg",
+            imgGallery1: "../../imgs/slay the spire/1.jpg",
+            imgGallery2: "../../imgs/slay the spire/2.jpg",
+            imgGallery3: "../../imgs/slay the spire/3.jpg",
+            imgGallery4: "../../imgs/slay the spire/4.jpg"
         },
         lanzamiento: 2017,
         estudio: { nombre: "MegaCrit", enlace: "https://www.megacrit.com/" },
@@ -364,11 +364,11 @@ const juegos = [
         plataformas: ["PC", "Switch", "PlayStation"],
         imagenes: {
             imgSlide: "../../imgs/dead cells/slide.jpg",
-            imgCard: "../../imgs/dead-cells/card.jpg",
-            imgGallery1: "../../imgs/dead-cells/1.jpg",
-            imgGallery2: "../../imgs/dead-cells/2.jpg",
-            imgGallery3: "../../imgs/dead-cells/3.jpg",
-            imgGallery4: "../../imgs/dead-cells/4.jpg"
+            imgCard: "../../imgs/dead cells/card.jpg",
+            imgGallery1: "../../imgs/dead cells/1.jpg",
+            imgGallery2: "../../imgs/dead cells/2.jpg",
+            imgGallery3: "../../imgs/dead cells/3.jpg",
+            imgGallery4: "../../imgs/dead cells/4.jpg"
         },
         lanzamiento: 2018,
         estudio: { nombre: "Motion Twin", enlace: "https://dead-cells.com/" },
@@ -389,11 +389,11 @@ const juegos = [
         plataformas: ["PC", "Switch"],
         imagenes: {
             imgSlide: "../../imgs/a short hike/slide.jpg",
-            imgCard: "../../imgs/a-short-hike/card.jpg",
-            imgGallery1: "../../imgs/a-short-hike/1.jpg",
-            imgGallery2: "../../imgs/a-short-hike/2.jpg",
-            imgGallery3: "../../imgs/a-short-hike/3.jpg",
-            imgGallery4: "../../imgs/a-short-hike/4.jpg"
+            imgCard: "../../imgs/a short hike/card.jpg",
+            imgGallery1: "../../imgs/a short hike/1.jpg",
+            imgGallery2: "../../imgs/a short hike/2.jpg",
+            imgGallery3: "../../imgs/a short hike/3.jpg",
+            imgGallery4: "../../imgs/a short hike/4.jpg"
         },
         lanzamiento: 2019,
         estudio: {
@@ -445,11 +445,11 @@ const juegos = [
         plataformas: ["PC", "Switch"],
         imagenes: {
             imgSlide: "../../imgs/hollow knight/slide.jpg",
-            imgCard: "../../imgs/hollow-knight/card.jpg",
-            imgGallery1: "../../imgs/hollow-knight/1.jpg",
-            imgGallery2: "../../imgs/hollow-knight/2.jpg",
-            imgGallery3: "../../imgs/hollow-knight/3.jpg",
-            imgGallery4: "../../imgs/hollow-knight/4.jpg"
+            imgCard: "../../imgs/hollow knight/card.jpg",
+            imgGallery1: "../../imgs/hollow knight/1.jpg",
+            imgGallery2: "../../imgs/hollow knight/2.jpg",
+            imgGallery3: "../../imgs/hollow knight/3.jpg",
+            imgGallery4: "../../imgs/hollow knight/4.jpg"
         },
         lanzamiento: 2017,
         estudio: {
@@ -501,11 +501,11 @@ const juegos = [
         plataformas: ["PC", "PlayStation"],
         imagenes: {
             imgSlide: "../../imgs/the witness/slide.jpg",
-            imgCard: "../../imgs/the-witness/card.jpg",
-            imgGallery1: "../../imgs/the-witness/1.jpg",
-            imgGallery2: "../../imgs/the-witness/2.jpg",
-            imgGallery3: "../../imgs/the-witness/3.jpg",
-            imgGallery4: "../../imgs/the-witness/4.jpg"
+            imgCard: "../../imgs/the witness/card.jpg",
+            imgGallery1: "../../imgs/the witness/1.jpg",
+            imgGallery2: "../../imgs/the witness/2.jpg",
+            imgGallery3: "../../imgs/the witness/3.jpg",
+            imgGallery4: "../../imgs/the witness/4.jpg"
         },
         lanzamiento: 2016,
         estudio: {

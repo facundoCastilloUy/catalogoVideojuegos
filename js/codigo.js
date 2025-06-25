@@ -57,31 +57,26 @@ const crearCard = (juego) => {
     card.classList.add('game-card');
 
     card.innerHTML = `
-    <button class="btn-fav">F</button>
+    <button class="btn-fav" data-id="${juego.id}">❤️</button>
     <img src="${juego.imagenes.imgCard}" alt="${juego.nombre}">
     <div class"card-content">
         <h3>${juego.nombre}</h3>
-        
+        <p>${juego.descripcion}</p>
+        <button class="btn-upvote">⬆️</button>       
+        <button class="btn-downvote">⬇️</button>       
     </div>
     `;
 
     return card;
 }
 
-// muestra 4 juegos de forma aleatoria y sin repetirse consecutivamente.
-const mostrarAleatorios = ()=>{
-    const contenedor = document.querySelector("#juegos-random");
+// slider de cards, muestra 4 cards en pantalla, todos son juegos favoritos.
+const mostrarFavoritos = ()=>{
+    const contenedor = document.querySelector("#juegos-favoritos");
     contenedor.innerHTML = "";
 
-    const juegosAleatorios = [];
+    const juegosFavoritos = [];
 
-    while(juegosAleatorios.length < 4){
-        const juego = obtenerJuegoAleatorio();
-        if(!juegosAleatorios.includes(juego)){
-            juegosAleatorios.push(juego);
-            contenedor.appendChild(crearCard(juego));
-        }
-    }
 };
 
 // muestra los 4 juegos con mas votos (upvotes)
@@ -115,6 +110,7 @@ let juegosFavoritos = [];
 
 // iniciadores
 
+actualizarSlide();
 iniciarIntervalo();
 mostrarDestacados();
 

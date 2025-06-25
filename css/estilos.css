@@ -28,11 +28,73 @@
   'opsz' 24
 }
 
-#slide{
-    width: 100vw;
-    height: 50vh;
+nav{
+    display: flex;
 }
 
-#slide img{
+
+#slider-section {
     width: 100%;
+    max-height: 60vh;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+}
+
+#slider-section button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+#slide {
+    width: 100%;
+    height: 100%;
+}
+
+/* Imagen dentro del slide */
+#slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+#contenedor-juegos-destacados {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#juegos-destacados {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#juegos-destacados img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    #juegos-destacados{
+    grid-template-columns: repeat(2, 1fr);}
+}
+
+@media screen and (max-width: 480px) {
+     #juegos-destacados{
+    grid-template-columns: 1fr;}
 }

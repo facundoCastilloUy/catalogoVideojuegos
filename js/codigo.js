@@ -1,5 +1,10 @@
-let ultimoIndice = -1;
+// variables globales
 
+// selectores
+
+// funciones
+
+let ultimoIndice = -1;
 const obtenerJuegoAleatorio = (juego) => {
     let nuevoIndice;
 
@@ -18,33 +23,99 @@ const mostrarSlide = (juego) => {
     slide.innerHTML = `
     <img src="${juego.imagenes.imgSlide}" alt="${juego.nombre}">
     <div class="slide-info">
-    <h2>${juego.nombre}</h2>
-    <p>${juego.descripcion}</p>
+         <h2>${juego.nombre}</h2>
+         <p>${juego.descripcion}</p>
     </div>
     `;
 }
 
-const actualizarSlide = ()=>{
+const actualizarSlide = () => {
     const juego = obtenerJuegoAleatorio();
     console.log(juego)
     mostrarSlide(juego);
 }
 
- const iniciarIntervalo = ()=>{
-     intervaloSlide = setInterval(actualizarSlide,5000);
- }
-
-// iniciarIntervalo();
+const iniciarIntervalo = () => {
+    intervaloSlide = setInterval(actualizarSlide, 5000);
+}
 
 const siguienteSlide = () => {
-     clearInterval(intervaloSlide);
-     actualizarSlide();
-     iniciarIntervalo();
- }
+    clearInterval(intervaloSlide);
+    actualizarSlide();
+    iniciarIntervalo();
+}
 
 const btnSiguienteSlide = document.querySelector("#btn-siguiente-slide");
 btnSiguienteSlide.addEventListener("click", siguienteSlide)
+//////////////////////////////////////////////////////////
+
+////////// CARDS - JUEGOS /////////////
+
+// crea una card tomando los datos de mi array de juegos.
+const crearCard = (juego) => {
+    const card = document.createElement('div');
+    card.classList.add('game-card');
+
+    card.innerHTML = `
+    <button class="btn-fav">F</button>
+    <img src="${juego.imagenes.imgCard}" alt="${juego.nombre}">
+    <div class"card-content">
+        <h3>${juego.nombre}</h3>
+        
+    </div>
+    `;
+
+    return card;
+}
+
+// muestra 4 juegos de forma aleatoria y sin repetirse consecutivamente.
+const mostrarAleatorios = ()=>{
+    const contenedor = document.querySelector("#juegos-random");
+    contenedor.innerHTML = "";
+
+    const juegosAleatorios = [];
+
+    while(juegosAleatorios.length < 4){
+        const juego = obtenerJuegoAleatorio();
+        if(!juegosAleatorios.includes(juego)){
+            juegosAleatorios.push(juego);
+            contenedor.appendChild(crearCard(juego));
+        }
+    }
+};
+
+// muestra los 4 juegos con mas votos (upvotes)
+const mostrarDestacados = () =>{
+    const contenedor = document.querySelector("#juegos-destacados");
+    contenedor.innerHTML = "";
+
+    const juegosOrdenados = juegos.sort((a,b)=>b.likes - a.likes);
+    const top4 = juegosOrdenados.slice(0,4);
+
+    top4.forEach(juego=>{
+        contenedor.appendChild(crearCard(juego));
+    })
+}
+
+// 
+const btnUpvote = ()=>{
+    document.querySelectorAll("#btn-upvote").forEach(btn =>{
+        btn.addEventListener("click", ()=>{
+            const id = parseInt(btn.dataset.id);
+
+        })
+    })
+}
 
 
+//////// FAVORITOS
+
+let juegosFavoritos = [];
+
+
+// iniciadores
+
+iniciarIntervalo();
+mostrarDestacados();
 
 

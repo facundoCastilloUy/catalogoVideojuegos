@@ -13,10 +13,17 @@ const contenedorCatalogo = document.querySelector("#catalogo-contenedor");
 const inputBuscador = document.querySelector("#buscador");
 const buscadorCantidad = document.querySelector("#busqueda-cantidad");
 
+const btnLimpiarFiltros = document.querySelector("#btn-limpiar-filtros");
+
+const formSugerencia = document.querySelector("#form-sugerencia");
+const modalContenedor = document.querySelector("#modal-contenedor");
+const btnCerrarModal = document.querySelector("#cerrar-modal");
+
+
 // Funciones
 
 //// HOME ////
-    
+
 // Slider //
 // funcion para obtener un juego aleatorio
 const obtenerJuegoAleatorio = () => {
@@ -54,28 +61,28 @@ const iniciarSlider = () => {
     intervaloSlide = setInterval(actualizarSlide, 5000);
 }
 
-
-//// CATALOGO ////
+// CATALOGO
 
 // Renderizar el catálogo completo de juegos
 const mostrarCatalogo = (listado) => {
     contenedorCatalogo.innerHTML = ""; // limpio el contenedor antes de cargar
 
-        listado.forEach((juego) => {
-            const esfavorito = juegosFavoritos.includes(juego.id); // verifico si es favorito
+    listado.forEach((juego) => {
+        const esfavorito = juegosFavoritos.includes(juego.id); // verifico si es favorito
 
-            const votosGuardados = obtenerVotos;
-            juego.votos = votosGuardados[juego.id] || 0; // asigno los votos guardados en localSorage ó 0.
+        const votosGuardados = obtenerVotos;
+        juego.votos = votosGuardados[juego.id] || 0; // asigno los votos guardados en localSorage ó 0.
 
-            // creo la card
-            const card = document.createElement("a");
-            card.href = `detalle.html?id=${juego.id}`;
-            card.classList.add("card");
-            if (esfavorito) card.classList.add("favorito");
+        // creo la card
+        const card = document.createElement("a");
+        card.href = `detalle.html?id=${juego.id}`;
+        card.classList.add("card");
+        if (esfavorito) card.classList.add("favorito");
 
-            card.innerHTML = `
+        card.innerHTML = `
         <button class="btn-favorito">❤️</button>
         <img src="${juego.imagenes.imgCard}" alt="${juego.nombre}">
+        <div class="card-info">
         <h3>${juego.nombre}</h3>
         <p>${juego.descripcion}</p>
         <div class="votos">
@@ -83,41 +90,42 @@ const mostrarCatalogo = (listado) => {
             <p class="votos-contador">${juego.votos}</p>
             <button class="btn-upvote">⬆️</button>
         </div>
+        </div>
         `;
 
-            // botón de favorito
-            card.querySelector(".btn-favorito").addEventListener("click", (e) => {
-                e.preventDefault();
-                if (esfavorito) {
-                    juegosFavoritos = juegosFavoritos.filter((fav) => fav !== juego.id);
-                } else {
-                    juegosFavoritos.push(juego.id);
-                }
-                setLocalStorage(claveFavoritos, juegosFavoritos);
-                aplicarFiltros(); // recargo catálogo con cambios
-            });
-
-            // click en upvote
-            card.querySelector(".btn-upvote").addEventListener("click", (e) => {
-                e.preventDefault();
-                const nuevoTotal = votarJuego(juego.id, 1);
-                juego.votos = nuevoTotal;
-                const contador = card.querySelector(".votos-contador");
-                contador.textContent = nuevoTotal;
-            });
-
-            // click en downvote
-            card.querySelector(".btn-downvote").addEventListener("click", (e) => {
-                e.preventDefault();
-                const nuevoTotal = votarJuego(juego.id, -1);
-                juego.votos = nuevoTotal;
-                const contador = card.querySelector(".votos-contador");
-                contador.textContent = nuevoTotal;
-            });
-
-            // agrego la card
-            contenedorCatalogo.append(card);
+        // botón de favorito
+        card.querySelector(".btn-favorito").addEventListener("click", (e) => {
+            e.preventDefault();
+            if (esfavorito) {
+                juegosFavoritos = juegosFavoritos.filter((fav) => fav !== juego.id);
+            } else {
+                juegosFavoritos.push(juego.id);
+            }
+            setLocalStorage(claveFavoritos, juegosFavoritos);
+            aplicarFiltros(); // recargo catálogo con cambios
         });
+
+        // click en upvote
+        card.querySelector(".btn-upvote").addEventListener("click", (e) => {
+            e.preventDefault();
+            const nuevoTotal = votarJuego(juego.id, 1);
+            juego.votos = nuevoTotal;
+            const contador = card.querySelector(".votos-contador");
+            contador.textContent = nuevoTotal;
+        });
+
+        // click en downvote
+        card.querySelector(".btn-downvote").addEventListener("click", (e) => {
+            e.preventDefault();
+            const nuevoTotal = votarJuego(juego.id, -1);
+            juego.votos = nuevoTotal;
+            const contador = card.querySelector(".votos-contador");
+            contador.textContent = nuevoTotal;
+        });
+
+        // agrego la card
+        contenedorCatalogo.append(card);
+    });
 };
 
 // función para votar un juego
@@ -195,7 +203,11 @@ const aplicarFiltros = () => {
         return;
     }
 
-    buscadorCantidad.textContent = `${juegosFiltrados.length} Resultados`;
+    if (textoBuscado != "") {
+        buscadorCantidad.textContent = `${juegosFiltrados.length} Resultados`;
+    } else {
+        buscadorCantidad.textContent = "";
+    }
 
     mostrarCatalogo(juegosFiltrados);
 }
@@ -210,11 +222,125 @@ const limpiarFiltros = () => {
     document.querySelector("input[name='filtro-año-actual']").checked = false;
     aplicarFiltros();
 }
-const btnLimpiarFiltros = document.querySelector("#btn-limpiar-filtros");
-btnLimpiarFiltros.addEventListener("click", limpiarFiltros);
+
+// ERRORES
+const mostrarError = (mensaje, idCampo) => {
+    const campoError = document.querySelector(`#error-${idCampo}`);
+    campoError.textContent = mensaje;
+    campoError.classList.remove("oculto");
+}
+
+const ocultarError = (idCampo) => {
+    const campoError = document.querySelector(`#error-${idCampo}`);
+    campoError.textContent = "";
+    campoError.classList.add("oculto");
+}
+
+// FORMULARIO
+const validarNombre = () => {
+    const nombre = document.querySelector("#nombre").value.trim();
+
+    if (!nombre) {
+        mostrarError("Ingresá tu nombre.", "nombre");
+        return false;
+    }
+
+    ocultarError("nombre");
+    return true;
+}
+
+const validarApellido = () => {
+    const apellido = document.querySelector("#apellido").value.trim();
+
+    if (!apellido) {
+        mostrarError("Ingresá tu apellido.", "apellido");
+        return false;
+    }
+
+    ocultarError("apellido");
+    return true;
+}
+
+const validarEdad = () => {
+    const edad = document.querySelector("#edad").value.trim();
+
+    if (isNaN(edad)) {
+        mostrarError("La edad debe ser un número", "edad");
+        return false;
+    }
+
+    ocultarError("edad");
+    return true;
+}
+
+const validarEmail = () => {
+    const email = document.querySelector("#email").value.trim();
+
+    if (!email) {
+        mostrarError("Ingresá tu email.", "email");
+        return false;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+        mostrarError("El email no es válido.", "email")
+        return false;
+    }
+
+    ocultarError("email");
+    return true;
+}
+
+const validarTitulo = () => {
+    const titulo = document.querySelector("#titulo").value.trim();
+
+    if (!titulo) {
+        mostrarError("Ingresá el título del juego.", "titulo");
+        return false;
+    }
+
+    ocultarError("titulo");
+    return true;
+}
+
+const validarPlataforma = () => {
+    const plataforma = document.querySelector("#plataforma").value.trim();
+
+    if (!plataforma) {
+        mostrarError("Indicá la plataforma.", "plataforma");
+        return false;
+    }
+
+    ocultarError("plataforma");
+    return true;
+}
+
+const validarDescripcion = () => {
+    const descripcion = document.querySelector("#descripcion").value.trim();
+
+    if (!descripcion) {
+        mostrarError("Contanos por qué lo sugerís.", "descripcion");
+        return false;
+    }
+
+    ocultarError("descripcion");
+    return true;
+}
+
+const validarFormulario = (e) => {
+    e.preventDefault();
+
+    const esValido = validarNombre() && validarApellido() && validarEdad() && validarEmail() && validarTitulo() && validarPlataforma() && validarDescripcion();
+
+    if(esValido){
+        formSugerencia.reset();
+        modalContenedor.classList.remove("oculto");
+    }
+}
 
 // Eventos
 document.querySelector("#ordenar").addEventListener("change", aplicarFiltros);
+
+btnLimpiarFiltros.addEventListener("click", limpiarFiltros);
 
 ["estadoAnimo", "duracion", "genero", "filtro-año-actual"].forEach(nombre => {
     document.querySelectorAll(`input[name='${nombre}']`)
@@ -222,6 +348,16 @@ document.querySelector("#ordenar").addEventListener("change", aplicarFiltros);
 });
 
 inputBuscador.addEventListener("input", aplicarFiltros);
+
+// Eventos del formulario
+document.querySelector("#nombre").addEventListener("blur", validarNombre);
+document.querySelector("#apellido").addEventListener("blur", validarApellido);
+document.querySelector("#edad").addEventListener("blur", validarEdad);
+document.querySelector("#email").addEventListener("blur", validarEmail);
+document.querySelector("#titulo").addEventListener("blur", validarTitulo);
+document.querySelector("#plataforma").addEventListener("blur", validarPlataforma);
+document.querySelector("#descripcion").addEventListener("blur", validarDescripcion);
+form.addEventListener("submit", validarFormulario);
 
 // Iniciadores
 mostrarCatalogo(juegos);

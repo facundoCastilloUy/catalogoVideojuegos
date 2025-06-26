@@ -4,52 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../css/estilos-catalogo.css">
     <title>Catálogo</title>
 </head>
 
 <body>
 
-    <aside id="sidebar">
-        <button id="btn-abrir-cerrar-sidebar">x</button>
-        <h2>Filtros avanzados</h2>
-        <label for="ordenar"></label>
-        <select name="" id="ordenar">
-            <option value="">Ordenar por:</option>
-            <option value="favoritos">Favoritos</option>
-            <option value="mas-votado">Más votado</option>
-            <option value="menos-votado">Menos votado</option>
-            <option value="nombre-a-z">Nombre A-Z</option>
-            <option value="nombre-z-a">Nombre Z-A</option>
-        </select>
-        <button id="btn-limpiar-filtros">Limpiar filtros</button>
-        <h3>Estado de ánimo</h3>
-        <label><input type="radio" name="estadoAnimo" value="todos" checked> Todos</label>
-        <label><input type="radio" name="estadoAnimo" value="Relajado"> Relajado</label>
-        <label><input type="radio" name="estadoAnimo" value="Emocional"> Emocional</label>
-        <label><input type="radio" name="estadoAnimo" value="Desafiante"> Desafiante</label>
-        <h3>Duración</h3>
-        <label><input type="radio" name="duracion" value="todas" checked> Todas</label>
-        <label><input type="radio" name="duracion" value="Corta"> Corta</label>
-        <label><input type="radio" name="duracion" value="Media"> Media</label>
-        <label><input type="radio" name="duracion" value="Larga"> Larga</label>
-        <h3>Género</h3>
-        <label><input type="radio" name="genero" value="todos" checked> Todos</label>
-        <label><input type="radio" name="genero" value="Aventura"> Aventura</label>
-        <label><input type="radio" name="genero" value="Puzzle"> Puzzle</label>
-        <label><input type="radio" name="genero" value="Acción"> Acción</label>
-        <hr></br>
-        <label><input type="checkbox" id="filtro-año-actual">Solo juegos lanzados este año</label>
-    </aside>
+    <nav>
+        <div><a href="index.html" id="logo"><span class="material-symbols-rounded">stadia_controller</span></a>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        <button>light_mode</button>
+    </nav>
 
-    <main id="catalogo">
+    <main id="pagina-catalogo">
+        <section id="busqueda-contenedor">
+            <p id="busqueda-cantidad"></p>
+            <input type="text" id="buscador" placeholder="Buscar por nombre">
+        </section>
+
+        <aside id="sidebar">
+            <button id="btn-abrir-cerrar-sidebar">x</button>
+            <h2>Filtros avanzados</h2>
+            <label for="ordenar"></label>
+            <select name="" id="ordenar">
+                <option value="">Ordenar por:</option>
+                <option value="favoritos">Favoritos</option>
+                <option value="mas-votado">Más votado</option>
+                <option value="menos-votado">Menos votado</option>
+                <option value="nombre-a-z">Nombre A-Z</option>
+                <option value="nombre-z-a">Nombre Z-A</option>
+            </select>
+            <button id="btn-limpiar-filtros">Limpiar filtros</button>
+            <h3>Estado de ánimo</h3>
+            <label><input type="radio" name="estadoAnimo" value="todos" class="filtro-estado" checked> Todos</label>
+            <label><input type="radio" name="estadoAnimo" value="Relajado" class="filtro-estado"> Relajado</label>
+            <label><input type="radio" name="estadoAnimo" value="Emocional" class="filtro-estado"> Emocional</label>
+            <label><input type="radio" name="estadoAnimo" value="Desafiante" class="filtro-estado"> Desafiante</label>
+            <h3>Duración</h3>
+            <label><input type="radio" name="duracion" value="todas" class="filtro-duracion" checked> Todas</label>
+            <label><input type="radio" name="duracion" value="Corta" class="filtro-duracion"> Corta</label>
+            <label><input type="radio" name="duracion" value="Media" class="filtro-duracion"> Media</label>
+            <label><input type="radio" name="duracion" value="Larga" class="filtro-duracion"> Larga</label>
+            <h3>Género</h3>
+            <label><input type="radio" name="genero" value="todos" class="filtro-genero" checked> Todos</label>
+            <label><input type="radio" name="genero" value="Aventura" class="filtro-genero"> Aventura</label>
+            <label><input type="radio" name="genero" value="Puzzle" class="filtro-genero"> Puzzle</label>
+            <label><input type="radio" name="genero" value="Acción" class="filtro-genero"> Acción</label>
+            <hr></br>
+            <label><input type="checkbox" name="filtro-año-actual" id="filtro-año-actual">Solo juegos lanzados este
+                año</label>
+        </aside>
+
+        <section id="catalogo-contenedor"></section>
 
     </main>
 
+    <footer>
+        <div class="mapa-sitio">
+            <h4>Mapa del sitio</h4>
+            <a href="index.html">Home</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#">Acerca de</a>
+            <a href="#">Contacto</a>
+        </div>
+        <div class="repositorio">
+            <h4>Repositorio</h4>
+            <a href="https://github.com/facundoCastilloUy/PW-Obligatorio1" target="_blank">GitHub</a>
+        </div>
+
+        <div class="creditos">
+            <p>&copy; 2025 | PW Obligatorio 1 | Catálogo de Videojuegos</p>
+            <p>Desarrollado por Facundo Castillo · N° de estudiante: 159990</p>
+            <p><a href="mailto:facundohcastillo@gmail.com">Contacto</a></p>
+        </div>
+    </footer>
+
+
     <script src="../js/helpers.js"></script>
     <script src="../js/data.js"></script>
-    <script src="../js/codigoV2.js"></script>
+    <script src="../js/codigo.js"></script>
 </body>
 
 </html>

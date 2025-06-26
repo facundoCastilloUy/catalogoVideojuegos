@@ -1,0 +1,162 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAV */
+nav {
+  background-color: #111;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* MAIN PAGE CONTAINER */
+#pagina-catalogo {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  flex: 1;
+}
+
+/* BÚSQUEDA */
+#busqueda-contenedor {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ddd;
+}
+
+#buscador {
+  padding: 0.5rem;
+  width: 250px;
+}
+
+/* SIDEBAR */
+#sidebar {
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  align-self: start;
+  height: fit-content;
+}
+
+#sidebar h2,
+#sidebar h3 {
+  margin: 1rem 0 0.5rem;
+}
+
+#sidebar label {
+  display: block;
+  margin: 0.3rem 0;
+}
+
+/* CATALOGO */
+#catalogo-contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* CARDS */
+.card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  margin: 0.5rem 0;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.votos {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* FOOTER */
+footer {
+  background-color: #222;
+  color: white;
+  padding: 2rem;
+  margin-top: auto;
+  text-align: center;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1024px) {
+  #pagina-catalogo {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  #sidebar {
+    order: 2;
+  }
+
+  #catalogo-contenedor {
+    order: 3;
+  }
+
+  #busqueda-contenedor {
+    order: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  #buscador {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+}

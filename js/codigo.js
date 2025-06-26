@@ -1,23 +1,36 @@
-// variables globales
+// Variables globales
+let claveFavoritos = "juegosFavoritos";
+let juegosFavoritos = getLocalStorage(claveFavoritos) || [];
 
-// selectores
-
-// funciones
+let claveVotos = "votos";
+const obtenerVotos = getLocalStorage(claveVotos) || {};
 
 let ultimoIndice = -1;
-const obtenerJuegoAleatorio = (juego) => {
-    let nuevoIndice;
+let intervaloSlide;
+
+// Selectores
+const contenedorCatalogo = document.querySelector("#catalogo-contenedor");
+const inputBuscador = document.querySelector("#buscador");
+const buscadorCantidad = document.querySelector("#busqueda-cantidad");
+
+// Funciones
+
+//// HOME ////
+    
+// Slider //
+// funcion para obtener un juego aleatorio
+const obtenerJuegoAleatorio = () => {
+    let indiceAleatorio;
 
     do {
-        nuevoIndice = Math.floor(Math.random() * juegos.length);
-    } while (nuevoIndice === ultimoIndice);
+        indiceAleatorio = Math.floor(Math.random() * juegos.length);
+    } while (indiceAleatorio === ultimoIndice);
 
-    ultimoIndice = nuevoIndice;
-    return juegos[nuevoIndice];
+    ultimoIndice = indiceAleatorio;
+    return juegos[indiceAleatorio];
 }
 
-obtenerJuegoAleatorio();
-
+// genera el slide con datos de mi array de juegos
 const mostrarSlide = (juego) => {
     const slide = document.querySelector("#slide");
     slide.innerHTML = `
@@ -29,89 +42,187 @@ const mostrarSlide = (juego) => {
     `;
 }
 
+// cambia de slide
 const actualizarSlide = () => {
     const juego = obtenerJuegoAleatorio();
-    console.log(juego)
     mostrarSlide(juego);
 }
 
-const iniciarIntervalo = () => {
+// iniciar el slider
+const iniciarSlider = () => {
+    actualizarSlide();
     intervaloSlide = setInterval(actualizarSlide, 5000);
 }
 
-const siguienteSlide = () => {
-    clearInterval(intervaloSlide);
-    actualizarSlide();
-    iniciarIntervalo();
-}
 
-const btnSiguienteSlide = document.querySelector("#btn-siguiente-slide");
-btnSiguienteSlide.addEventListener("click", siguienteSlide)
-//////////////////////////////////////////////////////////
+//// CATALOGO ////
 
-////////// CARDS - JUEGOS /////////////
+// Renderizar el catálogo completo de juegos
+const mostrarCatalogo = (listado) => {
+    contenedorCatalogo.innerHTML = ""; // limpio el contenedor antes de cargar
 
-// crea una card tomando los datos de mi array de juegos.
-const crearCard = (juego) => {
-    const card = document.createElement('div');
-    card.classList.add('game-card');
+        listado.forEach((juego) => {
+            const esfavorito = juegosFavoritos.includes(juego.id); // verifico si es favorito
 
-    card.innerHTML = `
-    <button class="btn-fav" data-id="${juego.id}">❤️</button>
-    <img src="${juego.imagenes.imgCard}" alt="${juego.nombre}">
-    <div class"card-content">
+            const votosGuardados = obtenerVotos;
+            juego.votos = votosGuardados[juego.id] || 0; // asigno los votos guardados en localSorage ó 0.
+
+            // creo la card
+            const card = document.createElement("a");
+            card.href = `detalle.html?id=${juego.id}`;
+            card.classList.add("card");
+            if (esfavorito) card.classList.add("favorito");
+
+            card.innerHTML = `
+        <button class="btn-favorito">❤️</button>
+        <img src="${juego.imagenes.imgCard}" alt="${juego.nombre}">
         <h3>${juego.nombre}</h3>
         <p>${juego.descripcion}</p>
-        <button class="btn-upvote">⬆️</button>       
-        <button class="btn-downvote">⬇️</button>       
-    </div>
-    `;
+        <div class="votos">
+            <button class="btn-downvote">⬇️</button>
+            <p class="votos-contador">${juego.votos}</p>
+            <button class="btn-upvote">⬆️</button>
+        </div>
+        `;
 
-    return card;
-}
+            // botón de favorito
+            card.querySelector(".btn-favorito").addEventListener("click", (e) => {
+                e.preventDefault();
+                if (esfavorito) {
+                    juegosFavoritos = juegosFavoritos.filter((fav) => fav !== juego.id);
+                } else {
+                    juegosFavoritos.push(juego.id);
+                }
+                setLocalStorage(claveFavoritos, juegosFavoritos);
+                aplicarFiltros(); // recargo catálogo con cambios
+            });
 
-// slider de cards, muestra 4 cards en pantalla, todos son juegos favoritos.
-const mostrarFavoritos = ()=>{
-    const contenedor = document.querySelector("#juegos-favoritos");
-    contenedor.innerHTML = "";
+            // click en upvote
+            card.querySelector(".btn-upvote").addEventListener("click", (e) => {
+                e.preventDefault();
+                const nuevoTotal = votarJuego(juego.id, 1);
+                juego.votos = nuevoTotal;
+                const contador = card.querySelector(".votos-contador");
+                contador.textContent = nuevoTotal;
+            });
 
-    const juegosFavoritos = [];
+            // click en downvote
+            card.querySelector(".btn-downvote").addEventListener("click", (e) => {
+                e.preventDefault();
+                const nuevoTotal = votarJuego(juego.id, -1);
+                juego.votos = nuevoTotal;
+                const contador = card.querySelector(".votos-contador");
+                contador.textContent = nuevoTotal;
+            });
 
+            // agrego la card
+            contenedorCatalogo.append(card);
+        });
 };
 
-// muestra los 4 juegos con mas votos (upvotes)
-const mostrarDestacados = () =>{
-    const contenedor = document.querySelector("#juegos-destacados");
-    contenedor.innerHTML = "";
+// función para votar un juego
+const votarJuego = (id, cambio) => {
+    const votos = obtenerVotos;
+    if (!votos[id]) votos[id] = 0;
+    votos[id] += cambio;
+    setLocalStorage(claveVotos, votos);
+    return votos[id];
+};
 
-    const juegosOrdenados = juegos.sort((a,b)=>b.likes - a.likes);
-    const top4 = juegosOrdenados.slice(0,4);
+// filtros del sidebar
+const aplicarFiltros = () => {
+    const estadoSeleccionado = document.querySelector(".filtro-estado:checked").value;
+    const duracionSeleccionada = document.querySelector(".filtro-duracion:checked").value;
+    const generoSeleccionado = document.querySelector(".filtro-genero:checked").value;
+    const ordenSeleccionado = document.querySelector("#ordenar").value;
+    const soloEsteAño = document.querySelector("#filtro-año-actual");
+    const textoBuscado = inputBuscador.value.toLowerCase().trim();
 
-    top4.forEach(juego=>{
-        contenedor.appendChild(crearCard(juego));
-    })
+    let juegosFiltrados = juegos.slice();
+
+    // filtros por estado de animo, duracion, genero, año.
+    if (estadoSeleccionado !== "todos") {
+        juegosFiltrados = juegosFiltrados.filter((juego) => juego.estadoAnimo === estadoSeleccionado);
+    };
+
+    if (duracionSeleccionada !== "todas") {
+        juegosFiltrados = juegosFiltrados.filter((juego) => juego.duracion === duracionSeleccionada);
+    }
+
+    if (generoSeleccionado !== "todos") {
+        juegosFiltrados = juegosFiltrados.filter((juego) => juego.genero === generoSeleccionado);
+    }
+
+    if (soloEsteAño.checked) {
+        const añoActual = new Date().getFullYear();
+        juegosFiltrados = juegosFiltrados.filter((juego) => juego.lanzamiento === añoActual);
+    }
+
+    // filtro de texto en tiempo real (nombre, estudio, genero, plataforma)
+    if (textoBuscado !== "") {
+        juegosFiltrados = juegosFiltrados.filter((juego) =>
+            juego.nombre.toLowerCase().includes(textoBuscado) ||
+            juego.estudio.nombre.toLowerCase().includes(textoBuscado) ||
+            juego.genero.toLowerCase().includes(textoBuscado) ||
+            juego.plataformas.some(plataforma => plataforma.toLowerCase().includes(textoBuscado))
+        )
+    }
+
+    // orden segun el select
+    switch (ordenSeleccionado) {
+        case "favoritos":
+            juegosFiltrados = juegosFiltrados.filter((juego) => juegosFavoritos.includes(juego.id));
+            break;
+        case "mas-votado":
+            juegosFiltrados.sort((a, b) => b.votos - a.votos);
+            break;
+        case "menos-votado":
+            juegosFiltrados.sort((a, b) => a.votos - b.votos);
+            break;
+        case "nombre-a-z":
+            juegosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            break;
+        case "nombre-z-a":
+            juegosFiltrados.sort((a, b) => b.nombre.localeCompare(a.nombre));
+            break;
+    }
+
+    // si no hay juegos, mostrar un mensaje y salir
+    if (juegosFiltrados.length === 0) {
+        contenedorCatalogo.innerHTML = `
+        <p>No se encontraron juegos que coincidan con los filtros seleccionados</p>
+        `;
+        return;
+    }
+
+    buscadorCantidad.textContent = `${juegosFiltrados.length} Resultados`;
+
+    mostrarCatalogo(juegosFiltrados);
 }
 
-// 
-const btnUpvote = ()=>{
-    document.querySelectorAll("#btn-upvote").forEach(btn =>{
-        btn.addEventListener("click", ()=>{
-            const id = parseInt(btn.dataset.id);
-
-        })
-    })
+// limpiar filtros
+const limpiarFiltros = () => {
+    inputBuscador.value = "";
+    document.querySelector("#ordenar").value = "";
+    document.querySelector("input[name='estadoAnimo'][value='todos']").checked = true;
+    document.querySelector("input[name='duracion'][value='todas']").checked = true;
+    document.querySelector("input[name='genero'][value='todos']").checked = true;
+    document.querySelector("input[name='filtro-año-actual']").checked = false;
+    aplicarFiltros();
 }
+const btnLimpiarFiltros = document.querySelector("#btn-limpiar-filtros");
+btnLimpiarFiltros.addEventListener("click", limpiarFiltros);
 
+// Eventos
+document.querySelector("#ordenar").addEventListener("change", aplicarFiltros);
 
-//////// FAVORITOS
+["estadoAnimo", "duracion", "genero", "filtro-año-actual"].forEach(nombre => {
+    document.querySelectorAll(`input[name='${nombre}']`)
+        .forEach(radio => radio.addEventListener("change", aplicarFiltros));
+});
 
-let juegosFavoritos = [];
+inputBuscador.addEventListener("input", aplicarFiltros);
 
-
-// iniciadores
-
-actualizarSlide();
-iniciarIntervalo();
-mostrarDestacados();
-
+// Iniciadores
+mostrarCatalogo(juegos);
 

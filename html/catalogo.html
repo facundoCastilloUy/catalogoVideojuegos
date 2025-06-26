@@ -17,27 +17,30 @@
         <label for="ordenar"></label>
         <select name="" id="ordenar">
             <option value="">Ordenar por:</option>
-            <option value="recomendados">Recomendados</option>
-            <option value="mas-nuevo-primero">Más votado</option>
-            <option value="mas-antiguo-primero">Menos votado</option>
+            <option value="favoritos">Favoritos</option>
+            <option value="mas-votado">Más votado</option>
+            <option value="menos-votado">Menos votado</option>
             <option value="nombre-a-z">Nombre A-Z</option>
             <option value="nombre-z-a">Nombre Z-A</option>
         </select>
+        <button id="btn-limpiar-filtros">Limpiar filtros</button>
         <h3>Estado de ánimo</h3>
         <label><input type="radio" name="estadoAnimo" value="todos" checked> Todos</label>
-        <label><input type="radio" name="estadoAnimo" value="relajado"> Relajado</label>
-        <label><input type="radio" name="estadoAnimo" value="emocional"> Emocional</label>
-        <label><input type="radio" name="estadoAnimo" value="desafiante"> Desafiante</label>
+        <label><input type="radio" name="estadoAnimo" value="Relajado"> Relajado</label>
+        <label><input type="radio" name="estadoAnimo" value="Emocional"> Emocional</label>
+        <label><input type="radio" name="estadoAnimo" value="Desafiante"> Desafiante</label>
         <h3>Duración</h3>
         <label><input type="radio" name="duracion" value="todas" checked> Todas</label>
-        <label><input type="radio" name="duracion" value="corta"> Corta</label>
-        <label><input type="radio" name="duracion" value="media"> Media</label>
-        <label><input type="radio" name="duracion" value="larga"> Larga</label>
+        <label><input type="radio" name="duracion" value="Corta"> Corta</label>
+        <label><input type="radio" name="duracion" value="Media"> Media</label>
+        <label><input type="radio" name="duracion" value="Larga"> Larga</label>
         <h3>Género</h3>
         <label><input type="radio" name="genero" value="todos" checked> Todos</label>
-        <label><input type="radio" name="genero" value="aventura"> Aventura</label>
-        <label><input type="radio" name="genero" value="puzzle"> Puzzle</label>
-        <label><input type="radio" name="genero" value="accion"> Acción</label>
+        <label><input type="radio" name="genero" value="Aventura"> Aventura</label>
+        <label><input type="radio" name="genero" value="Puzzle"> Puzzle</label>
+        <label><input type="radio" name="genero" value="Acción"> Acción</label>
+        <hr></br>
+        <label><input type="checkbox" id="filtro-año-actual">Solo juegos lanzados este año</label>
     </aside>
 
     <main id="catalogo">

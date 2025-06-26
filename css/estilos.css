@@ -164,6 +164,7 @@ body {
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   transition: transform .2s;
 }
@@ -178,6 +179,12 @@ body {
 .card h3 {
   font-size: 1rem;
   padding: .5rem;
+}
+
+.card,
+.card:visited,
+.card:active {
+    color: inherit;
 }
 
 .votos {
@@ -205,4 +212,9 @@ body {
     font-weight: bold;
     font-size: 16px;
     color: #333;
+}
+
+a{
+    text-decoration: none;
+    
 }

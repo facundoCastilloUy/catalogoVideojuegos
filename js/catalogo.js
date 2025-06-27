@@ -13,7 +13,7 @@ const buscadorCantidad = document.querySelector("#busqueda-cantidad");
 
 // Renderizar el catálogo completo de juegos
 const mostrarCatalogo = (listado, contenedor = contenedorCatalogo) => {
-    contenedor.innerHTML = ""; // limpio el contenedor antes de cargar
+    contenedor.innerHTML = "";
 
     listado.forEach((juego) => {
         const esfavorito = juegosFavoritos.includes(juego.id); // verifico si es favorito

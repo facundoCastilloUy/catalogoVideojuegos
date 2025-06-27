@@ -28,6 +28,7 @@ const actualizarSlide = () => {
     const slideOculta = slide[(slideActual + 1) % 2];
 
     slideVisible.innerHTML = `
+    <a href="detalle.html?id=${juego.id}" class="slide-enlace">
     <img src="${juego.imagenes.imgSlide}" alt="${juego.nombre}">
     <div class="slide-info">
     <div class="contenedor">
@@ -35,6 +36,7 @@ const actualizarSlide = () => {
          <p>${juego.descripcion}</p>
     </div>
     </div>
+    </a>
     `;
 
     slideVisible.classList.add("visible");

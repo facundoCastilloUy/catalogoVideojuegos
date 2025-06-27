@@ -258,7 +258,7 @@ footer {
 }
 
 /* DETALLE */
-#section-titulo {
+#section-titulo, #titulo {
     margin-top: 1rem;
 }
 
@@ -350,6 +350,10 @@ footer {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+#info-contenedor li a{
+    color: blue;
 }
 
 /* Iconos de tienda */

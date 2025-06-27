@@ -9,14 +9,11 @@ const obtenerVotos = getLocalStorage(claveVotos) || {};
 
 //selectores
 const contenedorCatalogo = document.querySelector("#catalogo-contenedor");
-const inputBuscador = document.querySelector("#buscador");
 const buscadorCantidad = document.querySelector("#busqueda-cantidad");
 
-const btnLimpiarFiltros = document.querySelector("#btn-limpiar-filtros");
-
 // Renderizar el catálogo completo de juegos
-const mostrarCatalogo = (listado) => {
-    contenedorCatalogo.innerHTML = ""; // limpio el contenedor antes de cargar
+const mostrarCatalogo = (listado, contenedor = contenedorCatalogo) => {
+    contenedor.innerHTML = ""; // limpio el contenedor antes de cargar
 
     listado.forEach((juego) => {
         const esfavorito = juegosFavoritos.includes(juego.id); // verifico si es favorito
@@ -31,7 +28,9 @@ const mostrarCatalogo = (listado) => {
         if (esfavorito) card.classList.add("favorito");
 
         card.innerHTML = `
-        <button class="btn-favorito">❤️</button>
+        <button class="btn-favorito"><span class="material-symbols-rounded">
+favorite
+</span></button>
         <img src="${juego.imagenes.imgCard}" alt="${juego.nombre}">
         <div class="card-info">
         <h3>${juego.nombre}</h3>
@@ -75,8 +74,30 @@ const mostrarCatalogo = (listado) => {
         });
 
         // agrego la card
-        contenedorCatalogo.append(card);
+        contenedor.append(card);
     });
+};
+
+// obtener los 5 mas votados
+const obtenerMasVotados = () => {
+    const votos = obtenerVotos;
+    return juegos
+        .slice()
+        .sort((a, b) => (votos[b.id] || 0) - (votos[a.id] || 0))
+        .slice(0, 5);
+};
+
+// obtener 5 juegos aleatorios
+const obtenerJuegosAleatorios = (cantidad = 5) => {
+    const copia = juegos.slice();
+    const resultado = [];
+
+    while (resultado.length < cantidad && copia.length > 0) {
+        const indice = Math.floor(Math.random() * copia.length);
+        resultado.push(copia.splice(indice, 1)[0]);
+    }
+
+    return resultado;
 };
 
 // función para votar un juego
@@ -175,16 +196,28 @@ const limpiarFiltros = () => {
 }
 
 //eventos
-document.querySelector("#ordenar").addEventListener("change", aplicarFiltros);
+const selectOrdenar = document.querySelector("#ordenar");
+if (selectOrdenar) {
+    selectOrdenar.addEventListener("change", aplicarFiltros);
+}
 
-btnLimpiarFiltros.addEventListener("click", limpiarFiltros);
+const btnLimpiarFiltros = document.querySelector("#btn-limpiar-filtros");
+if (btnLimpiarFiltros) {
+  btnLimpiarFiltros.addEventListener("click", limpiarFiltros);
+}
+
+const inputBuscador = document.querySelector("#buscador");
+if (inputBuscador) {
+  inputBuscador.addEventListener("input", aplicarFiltros);
+}
 
 ["estadoAnimo", "duracion", "genero", "filtro-año-actual"].forEach(nombre => {
     document.querySelectorAll(`input[name='${nombre}']`)
         .forEach(radio => radio.addEventListener("change", aplicarFiltros));
 });
 
-inputBuscador.addEventListener("input", aplicarFiltros);
 
 // Iniciadores
-mostrarCatalogo(juegos);
+if (contenedorCatalogo) {
+    mostrarCatalogo(juegos);
+}

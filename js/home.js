@@ -8,7 +8,7 @@ let slideActual = 0;
 // Funciones
 
 // funcion para obtener un juego aleatorio
-const obtenerJuegoAleatorio = () => {
+const obtenerJuegoAleatorioSlider = () => {
     let indiceAleatorio;
 
     do {
@@ -21,7 +21,7 @@ const obtenerJuegoAleatorio = () => {
 
 // cambia de slide
 const actualizarSlide = () => {
-    const juego = obtenerJuegoAleatorio();
+    const juego = obtenerJuegoAleatorioSlider();
     const slide = document.querySelectorAll(".slide-contenido");
 
     const slideVisible = slide[slideActual % 2];
@@ -50,3 +50,13 @@ const iniciarSlider = () => {
 }
 
 iniciarSlider();
+
+// 5 mas votados y 5 aleatorios
+const contenedorMasVotados = document.querySelector("#cards-mas-votados");
+const contenedorAleatorios = document.querySelector("#cards-aleatorios");
+
+const juegosMasVotados = obtenerMasVotados();
+const juegosAleatorios = obtenerJuegosAleatorios();
+
+mostrarCatalogo(juegosMasVotados, contenedorMasVotados);
+mostrarCatalogo(juegosAleatorios, contenedorAleatorios);

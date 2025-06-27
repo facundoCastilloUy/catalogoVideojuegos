@@ -1,3 +1,5 @@
+// CATALOGO
+
 // Variables globales
 let claveFavoritos = "juegosFavoritos";
 let juegosFavoritos = getLocalStorage(claveFavoritos) || [];
@@ -5,63 +7,12 @@ let juegosFavoritos = getLocalStorage(claveFavoritos) || [];
 let claveVotos = "votos";
 const obtenerVotos = getLocalStorage(claveVotos) || {};
 
-let ultimoIndice = -1;
-let intervaloSlide;
-
-// Selectores
+//selectores
 const contenedorCatalogo = document.querySelector("#catalogo-contenedor");
 const inputBuscador = document.querySelector("#buscador");
 const buscadorCantidad = document.querySelector("#busqueda-cantidad");
 
 const btnLimpiarFiltros = document.querySelector("#btn-limpiar-filtros");
-
-const formSugerencia = document.querySelector("#form-sugerencia");
-const modalContenedor = document.querySelector("#modal-contenedor");
-const btnCerrarModal = document.querySelector("#cerrar-modal");
-
-
-// Funciones
-
-//// HOME ////
-
-// Slider //
-// funcion para obtener un juego aleatorio
-const obtenerJuegoAleatorio = () => {
-    let indiceAleatorio;
-
-    do {
-        indiceAleatorio = Math.floor(Math.random() * juegos.length);
-    } while (indiceAleatorio === ultimoIndice);
-
-    ultimoIndice = indiceAleatorio;
-    return juegos[indiceAleatorio];
-}
-
-// genera el slide con datos de mi array de juegos
-const mostrarSlide = (juego) => {
-    const slide = document.querySelector("#slide");
-    slide.innerHTML = `
-    <img src="${juego.imagenes.imgSlide}" alt="${juego.nombre}">
-    <div class="slide-info">
-         <h2>${juego.nombre}</h2>
-         <p>${juego.descripcion}</p>
-    </div>
-    `;
-}
-
-// cambia de slide
-const actualizarSlide = () => {
-    const juego = obtenerJuegoAleatorio();
-    mostrarSlide(juego);
-}
-
-// iniciar el slider
-const iniciarSlider = () => {
-    actualizarSlide();
-    intervaloSlide = setInterval(actualizarSlide, 5000);
-}
-
-// CATALOGO
 
 // Renderizar el catálogo completo de juegos
 const mostrarCatalogo = (listado) => {
@@ -223,121 +174,7 @@ const limpiarFiltros = () => {
     aplicarFiltros();
 }
 
-// ERRORES
-const mostrarError = (mensaje, idCampo) => {
-    const campoError = document.querySelector(`#error-${idCampo}`);
-    campoError.textContent = mensaje;
-    campoError.classList.remove("oculto");
-}
-
-const ocultarError = (idCampo) => {
-    const campoError = document.querySelector(`#error-${idCampo}`);
-    campoError.textContent = "";
-    campoError.classList.add("oculto");
-}
-
-// FORMULARIO
-const validarNombre = () => {
-    const nombre = document.querySelector("#nombre").value.trim();
-
-    if (!nombre) {
-        mostrarError("Ingresá tu nombre.", "nombre");
-        return false;
-    }
-
-    ocultarError("nombre");
-    return true;
-}
-
-const validarApellido = () => {
-    const apellido = document.querySelector("#apellido").value.trim();
-
-    if (!apellido) {
-        mostrarError("Ingresá tu apellido.", "apellido");
-        return false;
-    }
-
-    ocultarError("apellido");
-    return true;
-}
-
-const validarEdad = () => {
-    const edad = document.querySelector("#edad").value.trim();
-
-    if (isNaN(edad)) {
-        mostrarError("La edad debe ser un número", "edad");
-        return false;
-    }
-
-    ocultarError("edad");
-    return true;
-}
-
-const validarEmail = () => {
-    const email = document.querySelector("#email").value.trim();
-
-    if (!email) {
-        mostrarError("Ingresá tu email.", "email");
-        return false;
-    }
-
-    if (!email.includes("@") || !email.includes(".")) {
-        mostrarError("El email no es válido.", "email")
-        return false;
-    }
-
-    ocultarError("email");
-    return true;
-}
-
-const validarTitulo = () => {
-    const titulo = document.querySelector("#titulo").value.trim();
-
-    if (!titulo) {
-        mostrarError("Ingresá el título del juego.", "titulo");
-        return false;
-    }
-
-    ocultarError("titulo");
-    return true;
-}
-
-const validarPlataforma = () => {
-    const plataforma = document.querySelector("#plataforma").value.trim();
-
-    if (!plataforma) {
-        mostrarError("Indicá la plataforma.", "plataforma");
-        return false;
-    }
-
-    ocultarError("plataforma");
-    return true;
-}
-
-const validarDescripcion = () => {
-    const descripcion = document.querySelector("#descripcion").value.trim();
-
-    if (!descripcion) {
-        mostrarError("Contanos por qué lo sugerís.", "descripcion");
-        return false;
-    }
-
-    ocultarError("descripcion");
-    return true;
-}
-
-const validarFormulario = (e) => {
-    e.preventDefault();
-
-    const esValido = validarNombre() && validarApellido() && validarEdad() && validarEmail() && validarTitulo() && validarPlataforma() && validarDescripcion();
-
-    if(esValido){
-        formSugerencia.reset();
-        modalContenedor.classList.remove("oculto");
-    }
-}
-
-// Eventos
+//eventos
 document.querySelector("#ordenar").addEventListener("change", aplicarFiltros);
 
 btnLimpiarFiltros.addEventListener("click", limpiarFiltros);
@@ -349,16 +186,5 @@ btnLimpiarFiltros.addEventListener("click", limpiarFiltros);
 
 inputBuscador.addEventListener("input", aplicarFiltros);
 
-// Eventos del formulario
-document.querySelector("#nombre").addEventListener("blur", validarNombre);
-document.querySelector("#apellido").addEventListener("blur", validarApellido);
-document.querySelector("#edad").addEventListener("blur", validarEdad);
-document.querySelector("#email").addEventListener("blur", validarEmail);
-document.querySelector("#titulo").addEventListener("blur", validarTitulo);
-document.querySelector("#plataforma").addEventListener("blur", validarPlataforma);
-document.querySelector("#descripcion").addEventListener("blur", validarDescripcion);
-form.addEventListener("submit", validarFormulario);
-
 // Iniciadores
 mostrarCatalogo(juegos);
-

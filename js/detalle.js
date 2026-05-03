@@ -24,14 +24,14 @@ const miniaturas = [
 ];
 
 const mostrarAmpliacion = (imagen) => {
-    galeriaAmpliacion.innerHTML = `<img src="../${imagen}" alt="">`
+    galeriaAmpliacion.innerHTML = `<img src="${imagen}" alt="">`
 }
 
 const cargarMiniaturas = () => {
     miniaturas.forEach((imagen, indice) => {
         const imagenMiniatura = document.createElement("button");
         imagenMiniatura.classList.add("imagen-miniatura");
-        imagenMiniatura.innerHTML = `<img src="../imgs/${imagen}">
+        imagenMiniatura.innerHTML = `<img src="imgs/${imagen}">
     `;
 
         if (indice === 0) {
@@ -67,8 +67,8 @@ contenedorInformacion.innerHTML = `
     <li><strong>Plataformas:</strong> ${juego.plataformas.join(", ")}</li>
     <li><strong>Duración:</strong> ${juego.duracion}</li>
     <li><strong>Disponible en:</strong>
-      ${juego.disponibleEn.Steam ? `<a href="${juego.disponibleEn.Steam}" target="_blank"><img src="../icons/Steam.png" class="icono-tienda" alt="Steam"></a>` : ""}
-      ${juego.disponibleEn.EpicGames ? `<a href="${juego.disponibleEn.EpicGames}" target="_blank"><img src="../icons/EpicGames.png" class="icono-tienda" alt="Epic Games"></a>` : ""}
+      ${juego.disponibleEn.Steam ? `<a href="${juego.disponibleEn.Steam}" target="_blank"><img src="icons/Steam.png" class="icono-tienda" alt="Steam"></a>` : ""}
+      ${juego.disponibleEn.EpicGames ? `<a href="${juego.disponibleEn.EpicGames}" target="_blank"><img src="icons/EpicGames.png" class="icono-tienda" alt="Epic Games"></a>` : ""}
     </li>
   </ul>
 `;

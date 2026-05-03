@@ -1032,7 +1032,7 @@ footer a {
         flex-wrap: wrap;
     }
 
-    #busqueda-contenedor button span:last-child {
+    #busqueda-contenedor button:not(#btn-ordenar) span:last-child {
         display: none;
     }
 
@@ -1047,13 +1047,49 @@ footer a {
     }
 
     #busqueda-contenedor #ordenar {
-        flex: 0 0 180px;
-        width: auto;
+        flex: 0 0 auto;
+        width: 2.9rem;
         max-width: none;
     }
 
     #btn-toggle-filtros {
         padding-inline: 0.85rem;
+    }
+
+    #ordenar {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        min-height: 2.9rem;
+        width: 2.9rem;
+        height: 2.9rem;
+        padding: 0;
+        margin-left: 0.75rem;
+        border: 1px solid var(--border-strong);
+        border-radius: 999px;
+        background-color: rgba(20, 26, 42, 0.8) !important;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>') !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: 1.3rem !important;
+        background-attachment: fixed;
+        color: transparent;
+        cursor: pointer;
+        text-indent: -9999px;
+        transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #ordenar:hover,
+    #ordenar:focus {
+        border-color: rgba(0,212,255,0.55);
+        background-color: rgba(0,212,255,0.25) !important;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>') !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: 1.3rem !important;
     }
 
     #galeria-miniaturas {
@@ -1188,7 +1224,7 @@ footer a {
         padding: 0.75rem;
     }
 
-    #btn-toggle-filtros span:last-child {
+    #busqueda-contenedor button span:last-child {
         display: none;
     }
 

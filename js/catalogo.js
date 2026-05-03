@@ -255,22 +255,22 @@ if (btnToggleFiltros && paginaCatalogo && sidebarFiltros) {
 }
 
 // Ocultar placeholder del select de orden en la lista desplegable
-if (selectOrdenar) {
-  selectOrdenar.addEventListener('mousedown', () => {
-    const placeholder = selectOrdenar.querySelector('option[value=""]');
-    if (placeholder) placeholder.remove();
-  });
-  selectOrdenar.addEventListener('blur', () => {
-    if (selectOrdenar.value === '') {
-      const placeholder = document.createElement('option');
-      placeholder.value = '';
-      placeholder.text = 'Ordenar por';
-      placeholder.disabled = true;
-      placeholder.selected = true;
-      selectOrdenar.insertBefore(placeholder, selectOrdenar.firstChild);
-    }
-  });
-}
+// if (selectOrdenar) {
+//   selectOrdenar.addEventListener('mousedown', () => {
+//     const placeholder = selectOrdenar.querySelector('option[value=""]');
+//     if (placeholder) placeholder.remove();
+//   });
+//   selectOrdenar.addEventListener('blur', () => {
+//     if (selectOrdenar.value === '') {
+//       const placeholder = document.createElement('option');
+//       placeholder.value = '';
+//       placeholder.text = 'Ordenar por';
+//       placeholder.disabled = true;
+//       placeholder.selected = true;
+//       selectOrdenar.insertBefore(placeholder, selectOrdenar.firstChild);
+//     }
+//   });
+// }
 
 
 // Iniciadores

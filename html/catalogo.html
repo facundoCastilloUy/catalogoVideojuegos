@@ -23,22 +23,27 @@
 
     <main id="pagina-catalogo">
         <section id="busqueda-contenedor">
-            <p id="busqueda-cantidad"></p>
+            <div class="busqueda-botones">
+                <button id="btn-toggle-filtros" type="button" aria-expanded="false" aria-controls="sidebar">
+                    <span class="material-symbols-rounded" aria-hidden="true">tune</span>
+                    <span>Filtros avanzados</span>
+                </button>
+            </div>
             <input type="text" id="buscador" placeholder="Buscar por nombre">
-        </section>
-
-        <aside id="sidebar">
-            <button id="btn-abrir-cerrar-sidebar"></button>
-            <h2>Filtros avanzados</h2>
-            <label for="ordenar"></label>
-            <select name="" id="ordenar">
-                <option value="">Ordenar por:</option>
+            <p id="busqueda-cantidad"></p>
+            <select id="ordenar" aria-label="Ordenar resultados">
+                <option value="" disabled selected>Ordenar por</option>
+                <option value="default">Por defecto</option>
                 <option value="favoritos">Favoritos</option>
                 <option value="mas-votado">Más votado</option>
                 <option value="menos-votado">Menos votado</option>
                 <option value="nombre-a-z">Nombre A-Z</option>
                 <option value="nombre-z-a">Nombre Z-A</option>
             </select>
+        </section>
+
+        <aside id="sidebar">
+            <h2>Filtros avanzados</h2>
             <button id="btn-limpiar-filtros">Limpiar filtros</button>
             <h3>Estado de ánimo</h3>
             <label><input type="radio" name="estadoAnimo" value="todos" class="filtro-estado" checked> Todos</label>

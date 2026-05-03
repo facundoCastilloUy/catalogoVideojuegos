@@ -28,17 +28,21 @@ const mostrarCatalogo = (listado, contenedor = contenedorCatalogo) => {
         if (esfavorito) card.classList.add("favorito");
 
         card.innerHTML = `
-        <button class="btn-favorito"><span class="material-symbols-rounded">
-favorite
-</span></button>
+        <button class="btn-favorito" type="button" aria-label="Agregar o quitar ${juego.nombre} de favoritos">
+            <span class="material-symbols-rounded">favorite</span>
+        </button>
         <img src="${juego.imagenes.imgCard}" alt="${juego.nombre}">
         <div class="card-info">
         <h3>${juego.nombre}</h3>
         <p>${juego.descripcion}</p>
         <div class="votos">
-            <button class="btn-downvote">⬇️</button>
+            <button class="btn-downvote voto-boton voto-negativo" type="button" aria-label="Restar voto a ${juego.nombre}">
+                <span class="material-symbols-rounded">arrow_downward</span>
+            </button>
             <p class="votos-contador">${juego.votos}</p>
-            <button class="btn-upvote">⬆️</button>
+            <button class="btn-upvote voto-boton voto-positivo" type="button" aria-label="Sumar voto a ${juego.nombre}">
+                <span class="material-symbols-rounded">arrow_upward</span>
+            </button>
         </div>
         </div>
         `;
@@ -46,18 +50,31 @@ favorite
         // botón de favorito
         card.querySelector(".btn-favorito").addEventListener("click", (e) => {
             e.preventDefault();
-            if (esfavorito) {
+            e.stopPropagation();
+
+            const yaEsFavorito = juegosFavoritos.includes(juego.id);
+
+            if (yaEsFavorito) {
                 juegosFavoritos = juegosFavoritos.filter((fav) => fav !== juego.id);
+                card.classList.remove("favorito");
             } else {
                 juegosFavoritos.push(juego.id);
+                card.classList.add("favorito");
             }
+
             setLocalStorage(claveFavoritos, juegosFavoritos);
-            aplicarFiltros(); // recargo catálogo con cambios
+
+            // En catálogo, si estoy viendo solo favoritos, conviene actualizar la grilla.
+            // En home y detalle no existen filtros, así que no se fuerza un re-render.
+            if (contenedorCatalogo && document.querySelector("#ordenar")?.value === "favoritos") {
+                aplicarFiltros();
+            }
         });
 
         // click en upvote
         card.querySelector(".btn-upvote").addEventListener("click", (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const nuevoTotal = votarJuego(juego.id, 1);
             juego.votos = nuevoTotal;
             const contador = card.querySelector(".votos-contador");
@@ -67,6 +84,7 @@ favorite
         // click en downvote
         card.querySelector(".btn-downvote").addEventListener("click", (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const nuevoTotal = votarJuego(juego.id, -1);
             juego.votos = nuevoTotal;
             const contador = card.querySelector(".votos-contador");
@@ -111,12 +129,14 @@ const votarJuego = (id, cambio) => {
 
 // filtros del sidebar
 const aplicarFiltros = () => {
-    const estadoSeleccionado = document.querySelector(".filtro-estado:checked").value;
-    const duracionSeleccionada = document.querySelector(".filtro-duracion:checked").value;
-    const generoSeleccionado = document.querySelector(".filtro-genero:checked").value;
-    const ordenSeleccionado = document.querySelector("#ordenar").value;
+    if (!contenedorCatalogo) return;
+
+    const estadoSeleccionado = document.querySelector(".filtro-estado:checked")?.value || "todos";
+    const duracionSeleccionada = document.querySelector(".filtro-duracion:checked")?.value || "todas";
+    const generoSeleccionado = document.querySelector(".filtro-genero:checked")?.value || "todos";
+    const ordenSeleccionado = document.querySelector("#ordenar")?.value || "";
     const soloEsteAño = document.querySelector("#filtro-año-actual");
-    const textoBuscado = inputBuscador.value.toLowerCase().trim();
+    const textoBuscado = inputBuscador?.value.toLowerCase().trim() || "";
 
     let juegosFiltrados = juegos.slice();
 
@@ -133,7 +153,7 @@ const aplicarFiltros = () => {
         juegosFiltrados = juegosFiltrados.filter((juego) => juego.genero === generoSeleccionado);
     }
 
-    if (soloEsteAño.checked) {
+    if (soloEsteAño?.checked) {
         const añoActual = new Date().getFullYear();
         juegosFiltrados = juegosFiltrados.filter((juego) => juego.lanzamiento === añoActual);
     }
@@ -154,10 +174,10 @@ const aplicarFiltros = () => {
             juegosFiltrados = juegosFiltrados.filter((juego) => juegosFavoritos.includes(juego.id));
             break;
         case "mas-votado":
-            juegosFiltrados.sort((a, b) => b.votos - a.votos);
+            juegosFiltrados.sort((a, b) => (obtenerVotos[b.id] || 0) - (obtenerVotos[a.id] || 0));
             break;
         case "menos-votado":
-            juegosFiltrados.sort((a, b) => a.votos - b.votos);
+            juegosFiltrados.sort((a, b) => (obtenerVotos[a.id] || 0) - (obtenerVotos[b.id] || 0));
             break;
         case "nombre-a-z":
             juegosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -176,9 +196,9 @@ const aplicarFiltros = () => {
     }
 
     if (textoBuscado != "") {
-        buscadorCantidad.textContent = `${juegosFiltrados.length} Resultados`;
+        if (buscadorCantidad) buscadorCantidad.textContent = `${juegosFiltrados.length} Resultados`;
     } else {
-        buscadorCantidad.textContent = "";
+        if (buscadorCantidad) buscadorCantidad.textContent = "";
     }
 
     mostrarCatalogo(juegosFiltrados);
@@ -198,7 +218,12 @@ const limpiarFiltros = () => {
 //eventos
 const selectOrdenar = document.querySelector("#ordenar");
 if (selectOrdenar) {
-    selectOrdenar.addEventListener("change", aplicarFiltros);
+    selectOrdenar.addEventListener("change", () => {
+        if (selectOrdenar.value === "default") {
+            selectOrdenar.value = "";
+        }
+        aplicarFiltros();
+    });
 }
 
 const btnLimpiarFiltros = document.querySelector("#btn-limpiar-filtros");
@@ -215,6 +240,37 @@ if (inputBuscador) {
     document.querySelectorAll(`input[name='${nombre}']`)
         .forEach(radio => radio.addEventListener("change", aplicarFiltros));
 });
+
+
+// Mostrar/ocultar filtros en pantallas chicas
+const paginaCatalogo = document.querySelector("#pagina-catalogo");
+const btnToggleFiltros = document.querySelector("#btn-toggle-filtros");
+const sidebarFiltros = document.querySelector("#sidebar");
+
+if (btnToggleFiltros && paginaCatalogo && sidebarFiltros) {
+  btnToggleFiltros.addEventListener("click", () => {
+    const filtrosAbiertos = paginaCatalogo.classList.toggle("filtros-abiertos");
+    btnToggleFiltros.setAttribute("aria-expanded", filtrosAbiertos ? "true" : "false");
+  });
+}
+
+// Ocultar placeholder del select de orden en la lista desplegable
+if (selectOrdenar) {
+  selectOrdenar.addEventListener('mousedown', () => {
+    const placeholder = selectOrdenar.querySelector('option[value=""]');
+    if (placeholder) placeholder.remove();
+  });
+  selectOrdenar.addEventListener('blur', () => {
+    if (selectOrdenar.value === '') {
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.text = 'Ordenar por';
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      selectOrdenar.insertBefore(placeholder, selectOrdenar.firstChild);
+    }
+  });
+}
 
 
 // Iniciadores

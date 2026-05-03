@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Mood Atlas</title>
+  <desc id="desc">Pixel map icon with a star</desc>
+  <defs>
+    <linearGradient id="g" x1="22" y1="20" x2="138" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8A5CF6"/>
+      <stop offset="0.45" stop-color="#297BFF"/>
+      <stop offset="1" stop-color="#12C7B7"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#g)">
+    <rect x="36" y="24" width="12" height="12" rx="1"/><rect x="50" y="24" width="12" height="12" rx="1"/><rect x="64" y="24" width="12" height="12" rx="1"/><rect x="78" y="24" width="12" height="12" rx="1"/>
+    <rect x="22" y="38" width="12" height="12" rx="1"/><rect x="36" y="38" width="12" height="12" rx="1"/><rect x="50" y="38" width="12" height="12" rx="1"/><rect x="64" y="38" width="12" height="12" rx="1"/><rect x="78" y="38" width="12" height="12" rx="1"/><rect x="92" y="38" width="12" height="12" rx="1"/>
+    <rect x="22" y="52" width="12" height="12" rx="1"/><rect x="36" y="52" width="12" height="12" rx="1"/><rect x="50" y="52" width="12" height="12" rx="1"/><rect x="64" y="52" width="12" height="12" rx="1"/><rect x="78" y="52" width="12" height="12" rx="1"/><rect x="92" y="52" width="12" height="12" rx="1"/>
+    <rect x="22" y="66" width="12" height="12" rx="1"/><rect x="36" y="66" width="12" height="12" rx="1"/><rect x="50" y="66" width="12" height="12" rx="1"/><rect x="64" y="66" width="12" height="12" rx="1"/><rect x="78" y="66" width="12" height="12" rx="1"/><rect x="92" y="66" width="12" height="12" rx="1"/><rect x="106" y="66" width="12" height="12" rx="1"/>
+    <rect x="36" y="80" width="12" height="12" rx="1"/><rect x="50" y="80" width="12" height="12" rx="1"/><rect x="64" y="80" width="12" height="12" rx="1"/><rect x="78" y="80" width="12" height="12" rx="1"/><rect x="92" y="80" width="12" height="12" rx="1"/><rect x="106" y="80" width="12" height="12" rx="1"/><rect x="120" y="80" width="12" height="12" rx="1"/>
+    <rect x="50" y="94" width="12" height="12" rx="1"/><rect x="64" y="94" width="12" height="12" rx="1"/><rect x="78" y="94" width="12" height="12" rx="1"/><rect x="92" y="94" width="12" height="12" rx="1"/><rect x="106" y="94" width="12" height="12" rx="1"/><rect x="120" y="94" width="12" height="12" rx="1"/>
+    <rect x="64" y="108" width="12" height="12" rx="1"/><rect x="78" y="108" width="12" height="12" rx="1"/><rect x="92" y="108" width="12" height="12" rx="1"/><rect x="106" y="108" width="12" height="12" rx="1"/>
+    <rect x="78" y="122" width="12" height="12" rx="1"/><rect x="92" y="122" width="12" height="12" rx="1"/>
+    <rect x="106" y="24" width="10" height="10" rx="1"/><rect x="120" y="38" width="8" height="8" rx="1"/><rect x="134" y="66" width="8" height="8" rx="1"/>
+  </g>
+  <path d="M132 26l5 13 13 5-13 5-5 13-5-13-13-5 13-5 5-13z" fill="#F2F4F8"/>
+  <path d="M132 32l3 8 8 3-8 3-3 8-3-8-8-3 8-3 3-8z" fill="#8A5CF6" opacity=".85"/>
+</svg>

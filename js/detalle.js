@@ -1,20 +1,12 @@
-// obtener id desde la URL
-const URLid = window.location.search;
-const URLarray = URLid.split("=");
-const id = parseInt(URLarray[1]);
-
-// buscar el juego con ese id
+// Obtiene el ID del juego desde la URL
+const id = parseInt(new URLSearchParams(window.location.search).get("id"));
 const juego = juegos.find(j => j.id === id);
 
-// mostrar titulo del juego
 document.querySelector("#titulo").textContent = juego.nombre;
 
-// galeria
+// Galería de imágenes
 const galeriaAmpliacion = document.querySelector("#galeria-ampliacion");
 const galeriaMiniaturas = document.querySelector("#galeria-miniaturas");
-
-
-galeriaMiniaturas.innerHTML = "";
 
 const miniaturas = [
     juego.imagenes.imgGallery1,
@@ -24,15 +16,14 @@ const miniaturas = [
 ];
 
 const mostrarAmpliacion = (imagen) => {
-    galeriaAmpliacion.innerHTML = `<img src="${imagen}" alt="">`
+    galeriaAmpliacion.innerHTML = `<img src="${imagen}" alt="">`;
 }
 
 const cargarMiniaturas = () => {
     miniaturas.forEach((imagen, indice) => {
         const imagenMiniatura = document.createElement("button");
         imagenMiniatura.classList.add("imagen-miniatura");
-        imagenMiniatura.innerHTML = `<img src="imgs/${imagen}">
-    `;
+        imagenMiniatura.innerHTML = `<img src="imgs/${imagen}">`;
 
         if (indice === 0) {
             imagenMiniatura.classList.add("miniatura-seleccionada");
@@ -41,21 +32,16 @@ const cargarMiniaturas = () => {
 
         imagenMiniatura.addEventListener("click", () => {
             mostrarAmpliacion(imagen);
-
-            const seleccionados = document.querySelectorAll(".miniatura-seleccionada");
-            seleccionados.forEach((img) => img.classList.remove("miniatura-seleccionada"));
-
+            document.querySelectorAll(".miniatura-seleccionada").forEach(img => img.classList.remove("miniatura-seleccionada"));
             imagenMiniatura.classList.add("miniatura-seleccionada");
-        })
-        galeriaMiniaturas.append(imagenMiniatura)
-    })
+        });
+        galeriaMiniaturas.append(imagenMiniatura);
+    });
 }
 
-// iniciadores
 cargarMiniaturas();
 
-
-// informacion del juego
+// Información del juego
 const contenedorInformacion = document.querySelector("#informacion-juego");
 
 contenedorInformacion.innerHTML = `
@@ -73,11 +59,6 @@ contenedorInformacion.innerHTML = `
   </ul>
 `;
 
-// 5 mas votados
-const top5 = obtenerMasVotados();
-mostrarCatalogo(top5, document.querySelector("#cards-mas-votados"));
-
-// aleatorios
-const aleatorios = obtenerJuegosAleatorios();
-mostrarCatalogo(aleatorios, document.querySelector("#cards-aleatorios"));
-
+// Secciones de juegos relacionados
+mostrarCatalogo(obtenerMasVotados(), document.querySelector("#cards-mas-votados"));
+mostrarCatalogo(obtenerJuegosAleatorios(), document.querySelector("#cards-aleatorios"));

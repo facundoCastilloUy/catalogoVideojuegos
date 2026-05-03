@@ -1,27 +1,23 @@
-// CATALOGO
+// Catálogo de videojuegos
 
-// Variables globales
 let claveFavoritos = "juegosFavoritos";
 let juegosFavoritos = getLocalStorage(claveFavoritos) || [];
 
 let claveVotos = "votos";
 const obtenerVotos = getLocalStorage(claveVotos) || {};
 
-//selectores
 const contenedorCatalogo = document.querySelector("#catalogo-contenedor");
 const buscadorCantidad = document.querySelector("#busqueda-cantidad");
 
-// Renderizar el catálogo completo de juegos
+// Renderiza el catálogo con las cards de juegos
 const mostrarCatalogo = (listado, contenedor = contenedorCatalogo) => {
     contenedor.innerHTML = "";
 
     listado.forEach((juego) => {
-        const esfavorito = juegosFavoritos.includes(juego.id); // verifico si es favorito
-
+        const esfavorito = juegosFavoritos.includes(juego.id);
         const votosGuardados = obtenerVotos;
-        juego.votos = votosGuardados[juego.id] || 0; // asigno los votos guardados en localSorage ó 0.
+        juego.votos = votosGuardados[juego.id] || 0;
 
-        // creo la card
         const card = document.createElement("a");
         card.href = `detalle.html?id=${juego.id}`;
         card.classList.add("card");
@@ -47,7 +43,14 @@ const mostrarCatalogo = (listado, contenedor = contenedorCatalogo) => {
         </div>
         `;
 
-        // botón de favorito
+        const actualizarContador = (voto) => (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const nuevoTotal = votarJuego(juego.id, voto);
+            juego.votos = nuevoTotal;
+            card.querySelector(".votos-contador").textContent = nuevoTotal;
+        };
+
         card.querySelector(".btn-favorito").addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -64,39 +67,19 @@ const mostrarCatalogo = (listado, contenedor = contenedorCatalogo) => {
 
             setLocalStorage(claveFavoritos, juegosFavoritos);
 
-            // En catálogo, si estoy viendo solo favoritos, conviene actualizar la grilla.
-            // En home y detalle no existen filtros, así que no se fuerza un re-render.
             if (contenedorCatalogo && document.querySelector("#ordenar")?.value === "favoritos") {
                 aplicarFiltros();
             }
         });
 
-        // click en upvote
-        card.querySelector(".btn-upvote").addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const nuevoTotal = votarJuego(juego.id, 1);
-            juego.votos = nuevoTotal;
-            const contador = card.querySelector(".votos-contador");
-            contador.textContent = nuevoTotal;
-        });
+        card.querySelector(".btn-upvote").addEventListener("click", actualizarContador(1));
+        card.querySelector(".btn-downvote").addEventListener("click", actualizarContador(-1));
 
-        // click en downvote
-        card.querySelector(".btn-downvote").addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const nuevoTotal = votarJuego(juego.id, -1);
-            juego.votos = nuevoTotal;
-            const contador = card.querySelector(".votos-contador");
-            contador.textContent = nuevoTotal;
-        });
-
-        // agrego la card
         contenedor.append(card);
     });
 };
 
-// obtener los 5 mas votados
+// Obtiene los 5 juegos más votados
 const obtenerMasVotados = () => {
     const votos = obtenerVotos;
     return juegos
@@ -105,7 +88,7 @@ const obtenerMasVotados = () => {
         .slice(0, 5);
 };
 
-// obtener 5 juegos aleatorios
+// Obtiene n juegos aleatorios sin repetir
 const obtenerJuegosAleatorios = (cantidad = 5) => {
     const copia = juegos.slice();
     const resultado = [];
@@ -118,7 +101,7 @@ const obtenerJuegosAleatorios = (cantidad = 5) => {
     return resultado;
 };
 
-// función para votar un juego
+// Suma o resta votos a un juego
 const votarJuego = (id, cambio) => {
     const votos = obtenerVotos;
     if (!votos[id]) votos[id] = 0;
@@ -127,7 +110,7 @@ const votarJuego = (id, cambio) => {
     return votos[id];
 };
 
-// filtros del sidebar
+// Aplica los filtros activos del sidebar
 const aplicarFiltros = () => {
     if (!contenedorCatalogo) return;
 
@@ -140,10 +123,9 @@ const aplicarFiltros = () => {
 
     let juegosFiltrados = juegos.slice();
 
-    // filtros por estado de animo, duracion, genero, año.
     if (estadoSeleccionado !== "todos") {
         juegosFiltrados = juegosFiltrados.filter((juego) => juego.estadoAnimo === estadoSeleccionado);
-    };
+    }
 
     if (duracionSeleccionada !== "todas") {
         juegosFiltrados = juegosFiltrados.filter((juego) => juego.duracion === duracionSeleccionada);
@@ -158,7 +140,6 @@ const aplicarFiltros = () => {
         juegosFiltrados = juegosFiltrados.filter((juego) => juego.lanzamiento === añoActual);
     }
 
-    // filtro de texto en tiempo real (nombre, estudio, genero, plataforma)
     if (textoBuscado !== "") {
         juegosFiltrados = juegosFiltrados.filter((juego) =>
             juego.nombre.toLowerCase().includes(textoBuscado) ||
@@ -168,7 +149,6 @@ const aplicarFiltros = () => {
         )
     }
 
-    // orden segun el select
     switch (ordenSeleccionado) {
         case "favoritos":
             juegosFiltrados = juegosFiltrados.filter((juego) => juegosFavoritos.includes(juego.id));
@@ -187,15 +167,12 @@ const aplicarFiltros = () => {
             break;
     }
 
-    // si no hay juegos, mostrar un mensaje y salir
     if (juegosFiltrados.length === 0) {
-        contenedorCatalogo.innerHTML = `
-        <p>No se encontraron juegos que coincidan con los filtros seleccionados</p>
-        `;
+        contenedorCatalogo.innerHTML = `<p>No se encontraron juegos que coincidan con los filtros seleccionados</p>`;
         return;
     }
 
-    if (textoBuscado != "") {
+    if (textoBuscado !== "") {
         if (buscadorCantidad) buscadorCantidad.textContent = `${juegosFiltrados.length} Resultados`;
     } else {
         if (buscadorCantidad) buscadorCantidad.textContent = "";
@@ -204,7 +181,7 @@ const aplicarFiltros = () => {
     mostrarCatalogo(juegosFiltrados);
 }
 
-// limpiar filtros
+// Resetea todos los filtros a su estado inicial
 const limpiarFiltros = () => {
     inputBuscador.value = "";
     document.querySelector("#ordenar").value = "";
@@ -215,7 +192,7 @@ const limpiarFiltros = () => {
     aplicarFiltros();
 }
 
-//eventos
+// Eventos
 const selectOrdenar = document.querySelector("#ordenar");
 if (selectOrdenar) {
     selectOrdenar.addEventListener("change", () => {
@@ -241,8 +218,7 @@ if (inputBuscador) {
         .forEach(radio => radio.addEventListener("change", aplicarFiltros));
 });
 
-
-// Mostrar/ocultar filtros en pantallas chicas
+// Toggle de filtros en pantallas pequeñas
 const paginaCatalogo = document.querySelector("#pagina-catalogo");
 const btnToggleFiltros = document.querySelector("#btn-toggle-filtros");
 const sidebarFiltros = document.querySelector("#sidebar");
@@ -254,26 +230,6 @@ if (btnToggleFiltros && paginaCatalogo && sidebarFiltros) {
   });
 }
 
-// Ocultar placeholder del select de orden en la lista desplegable
-// if (selectOrdenar) {
-//   selectOrdenar.addEventListener('mousedown', () => {
-//     const placeholder = selectOrdenar.querySelector('option[value=""]');
-//     if (placeholder) placeholder.remove();
-//   });
-//   selectOrdenar.addEventListener('blur', () => {
-//     if (selectOrdenar.value === '') {
-//       const placeholder = document.createElement('option');
-//       placeholder.value = '';
-//       placeholder.text = 'Ordenar por';
-//       placeholder.disabled = true;
-//       placeholder.selected = true;
-//       selectOrdenar.insertBefore(placeholder, selectOrdenar.firstChild);
-//     }
-//   });
-// }
-
-
-// Iniciadores
 if (contenedorCatalogo) {
     mostrarCatalogo(juegos);
 }

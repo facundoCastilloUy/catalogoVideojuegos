@@ -1,15 +1,13 @@
-const setLocalStorage =(clave, valor)=>{
-    if(typeof valor ==="object"){
-        valor = JSON.stringify(valor)
-    }
-    localStorage.setItem(clave, valor)
+// Funciones auxiliares para localStorage
+
+const setLocalStorage = (clave, valor) => {
+    localStorage.setItem(clave, typeof valor === "object" ? JSON.stringify(valor) : valor);
 }
 
-const getLocalStorage = (clave) =>{
-    let valor = localStorage.getItem(clave);
-    try{
-        return JSON.parse(valor)
-    }catch(error){
-        return valor
+const getLocalStorage = (clave) => {
+    try {
+        return JSON.parse(localStorage.getItem(clave));
+    } catch {
+        return localStorage.getItem(clave);
     }
 }

@@ -17,8 +17,6 @@ const juegos = [
         },
         lanzamiento: 2016,
         estudio: { nombre: "ConcernedApe", enlace: "https://www.concernedape.com/" },
-        favorito: false,
-        votos: 0,
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/413150/Stardew_Valley/"
         }
@@ -41,8 +39,7 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Matt Makes Games", enlace: "https://www.celestegame.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/504230/Celeste/",
             EpicGames: "https://store.epicgames.com/en-US/p/celeste"
@@ -66,8 +63,7 @@ const juegos = [
         },
         lanzamiento: 2012,
         estudio: { nombre: "thatgamecompany", enlace: "https://thatgamecompany.com/journey/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/638230/Journey/",
             EpicGames: "https://store.epicgames.com/en-US/p/journey"
@@ -91,8 +87,7 @@ const juegos = [
         },
         lanzamiento: 2020,
         estudio: { nombre: "Supergiant Games", enlace: "https://www.supergiantgames.com/games/hades/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/1145360/Hades/",
             EpicGames: "https://store.epicgames.com/en-US/p/hades"
@@ -116,8 +111,7 @@ const juegos = [
         },
         lanzamiento: 2016,
         estudio: { nombre: "Campo Santo", enlace: "https://www.firewatchgame.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/383870/Firewatch/"
         }
@@ -140,8 +134,7 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Nomada Studio", enlace: "https://nomada.studio/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/683320/GRIS/"
         }
@@ -164,8 +157,7 @@ const juegos = [
         },
         lanzamiento: 2021,
         estudio: { nombre: "Four Quarters", enlace: "https://fourquarters.team/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/1282730/Loop_Hero/"
         }
@@ -188,8 +180,7 @@ const juegos = [
         },
         lanzamiento: 2021,
         estudio: { nombre: "poncle", enlace: "https://poncle.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/1794680/Vampire_Survivors/"
         }
@@ -212,8 +203,7 @@ const juegos = [
         },
         lanzamiento: 2010,
         estudio: { nombre: "Playdead", enlace: "https://playdead.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/48000/LIMBO/"
         }
@@ -236,8 +226,7 @@ const juegos = [
         },
         lanzamiento: 2020,
         estudio: { nombre: "Thunder Lotus Games", enlace: "https://thunderlotusgames.com/spiritfarer/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/972660/Spiritfarer/"
         }
@@ -260,8 +249,7 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Monstars", enlace: "https://www.enhance-experience.com/tetriseffect/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             EpicGames: "https://store.epicgames.com/en-US/p/tetris-effect-connected"
         }
@@ -284,8 +272,7 @@ const juegos = [
         },
         lanzamiento: 2015,
         estudio: { nombre: "Dinosaur Polo Club", enlace: "https://dinopoloclub.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/287980/Mini_Metro/"
         }
@@ -308,8 +295,7 @@ const juegos = [
         },
         lanzamiento: 2017,
         estudio: { nombre: "MegaCrit", enlace: "https://www.megacrit.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/646570/Slay_the_Spire/"
         }
@@ -332,8 +318,7 @@ const juegos = [
         },
         lanzamiento: 2016,
         estudio: { nombre: "Night School Studio", enlace: "https://nightschoolstudio.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/388880/Oxenfree/"
         }
@@ -356,8 +341,7 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Motion Twin", enlace: "https://dead-cells.com/" },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/588650/Dead_Cells/"
         }
@@ -383,8 +367,7 @@ const juegos = [
             nombre: "adamgryu",
             enlace: "https://adamgryu.com"
         },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/16000/a-short-hike/"
         }
@@ -410,8 +393,7 @@ const juegos = [
             nombre: "Playdead",
             enlace: "https://playdead.com"
         },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/17000/inside/"
         }
@@ -437,8 +419,7 @@ const juegos = [
             nombre: "Team Cherry",
             enlace: "https://www.teamcherry.com.au"
         },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/18000/hollow-knight/"
         }
@@ -464,8 +445,7 @@ const juegos = [
             nombre: "Witch Beam",
             enlace: "https://www.unpackinggame.com"
         },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/19000/unpacking/"
         }
@@ -491,10 +471,10 @@ const juegos = [
             nombre: "Jonathan Blow",
             enlace: "https://the-witness.net"
         },
-        favorito: false,
-        votos: 0,
+
         disponibleEn: {
             Steam: "https://store.steampowered.com/app/20000/the-witness/"
         }
     }
 ];
+

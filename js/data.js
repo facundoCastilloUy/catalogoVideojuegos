@@ -17,13 +17,11 @@ const juegos = [
         },
         lanzamiento: 2016,
         estudio: { nombre: "ConcernedApe", enlace: "https://www.concernedape.com/" },
-        video: "https://www.youtube.com/watch?v=ot7uXNQskhs",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/413150/Stardew_Valley/"],
-            ["GOG", "https://www.gog.com/game/stardew_valley"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/413150/Stardew_Valley/"
+        }
     },
     {
         id: 2,
@@ -43,13 +41,12 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Matt Makes Games", enlace: "https://www.celestegame.com/" },
-        video: "https://www.youtube.com/watch?v=iofYDsP3zjI",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/504230/Celeste/"],
-            ["Epic Games", "https://store.epicgames.com/en-US/p/celeste"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/504230/Celeste/",
+            EpicGames: "https://store.epicgames.com/en-US/p/celeste"
+        }
     },
     {
         id: 3,
@@ -69,13 +66,12 @@ const juegos = [
         },
         lanzamiento: 2012,
         estudio: { nombre: "thatgamecompany", enlace: "https://thatgamecompany.com/journey/" },
-        video: "https://www.youtube.com/watch?v=_mF8KkDiIdk",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/638230/Journey/"],
-            ["Epic Games", "https://store.epicgames.com/en-US/p/journey"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/638230/Journey/",
+            EpicGames: "https://store.epicgames.com/en-US/p/journey"
+        }
     },
     {
         id: 4,
@@ -95,13 +91,12 @@ const juegos = [
         },
         lanzamiento: 2020,
         estudio: { nombre: "Supergiant Games", enlace: "https://www.supergiantgames.com/games/hades/" },
-        video: "https://www.youtube.com/watch?v=91sfrzBZz0I",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/1145360/Hades/"],
-            ["Epic Games", "https://store.epicgames.com/en-US/p/hades"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/1145360/Hades/",
+            EpicGames: "https://store.epicgames.com/en-US/p/hades"
+        }
     },
     {
         id: 5,
@@ -121,13 +116,11 @@ const juegos = [
         },
         lanzamiento: 2016,
         estudio: { nombre: "Campo Santo", enlace: "https://www.firewatchgame.com/" },
-        video: "https://www.youtube.com/watch?v=5iHhBXzQKXY",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/383870/Firewatch/"],
-            ["PlayStation Store", "https://store.playstation.com/en-us/product/UP2151-CUSA04307_00-FIREWATCH0000001"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/383870/Firewatch/"
+        }
     },
     {
         id: 6,
@@ -147,12 +140,11 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Nomada Studio", enlace: "https://nomada.studio/" },
-        video: "https://www.youtube.com/watch?v=gvECQlxrhbw",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/683320/GRIS/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/683320/GRIS/"
+        }
     },
     {
         id: 7,
@@ -172,12 +164,11 @@ const juegos = [
         },
         lanzamiento: 2021,
         estudio: { nombre: "Four Quarters", enlace: "https://fourquarters.team/" },
-        video: "https://www.youtube.com/watch?v=nc0zYJUwG8I",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/1282730/Loop_Hero/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/1282730/Loop_Hero/"
+        }
     },
     {
         id: 8,
@@ -197,12 +188,11 @@ const juegos = [
         },
         lanzamiento: 2021,
         estudio: { nombre: "poncle", enlace: "https://poncle.com/" },
-        video: "https://www.youtube.com/watch?v=UGJ2HcN2A2I",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/1794680/Vampire_Survivors/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/1794680/Vampire_Survivors/"
+        }
     },
     {
         id: 9,
@@ -222,12 +212,11 @@ const juegos = [
         },
         lanzamiento: 2010,
         estudio: { nombre: "Playdead", enlace: "https://playdead.com/" },
-        video: "https://www.youtube.com/watch?v=Y4HSyVXKYz8",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/48000/LIMBO/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/48000/LIMBO/"
+        }
     },
     {
         id: 10,
@@ -247,12 +236,11 @@ const juegos = [
         },
         lanzamiento: 2020,
         estudio: { nombre: "Thunder Lotus Games", enlace: "https://thunderlotusgames.com/spiritfarer/" },
-        video: "https://www.youtube.com/watch?v=QkrV5KfQRTc",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/972660/Spiritfarer/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/972660/Spiritfarer/"
+        }
     },
     {
         id: 11,
@@ -272,12 +260,11 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Monstars", enlace: "https://www.enhance-experience.com/tetriseffect/" },
-        video: "https://www.youtube.com/watch?v=KZazEM8cgt0",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Epic Games", "https://store.epicgames.com/en-US/p/tetris-effect-connected"]
-        ]
+        disponibleEn: {
+            EpicGames: "https://store.epicgames.com/en-US/p/tetris-effect-connected"
+        }
     },
     {
         id: 12,
@@ -297,12 +284,11 @@ const juegos = [
         },
         lanzamiento: 2015,
         estudio: { nombre: "Dinosaur Polo Club", enlace: "https://dinopoloclub.com/" },
-        video: "https://www.youtube.com/watch?v=W7mXfLh2zgc",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/287980/Mini_Metro/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/287980/Mini_Metro/"
+        }
     },
     {
         id: 13,
@@ -322,12 +308,11 @@ const juegos = [
         },
         lanzamiento: 2017,
         estudio: { nombre: "MegaCrit", enlace: "https://www.megacrit.com/" },
-        video: "https://www.youtube.com/watch?v=3kgu2v4WmDA",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/646570/Slay_the_Spire/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/646570/Slay_the_Spire/"
+        }
     },
     {
         id: 14,
@@ -347,12 +332,11 @@ const juegos = [
         },
         lanzamiento: 2016,
         estudio: { nombre: "Night School Studio", enlace: "https://nightschoolstudio.com/" },
-        video: "https://www.youtube.com/watch?v=NAhrOoNR4ng",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/388880/Oxenfree/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/388880/Oxenfree/"
+        }
     },
     {
         id: 15,
@@ -372,12 +356,11 @@ const juegos = [
         },
         lanzamiento: 2018,
         estudio: { nombre: "Motion Twin", enlace: "https://dead-cells.com/" },
-        video: "https://www.youtube.com/watch?v=KxRJ7aOXQLY",
         favorito: false,
         votos: 0,
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/588650/Dead_Cells/"]
-        ]
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/588650/Dead_Cells/"
+        }
     },
     {
         id: 16,
@@ -400,12 +383,11 @@ const juegos = [
             nombre: "adamgryu",
             enlace: "https://adamgryu.com"
         },
-        video: "https://www.youtube.com/watch?v=R9LFo8QUAVA",
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/16000/a-short-hike/"]
-        ],
         favorito: false,
-        votos: 0
+        votos: 0,
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/16000/a-short-hike/"
+        }
     },
     {
         id: 17,
@@ -428,12 +410,11 @@ const juegos = [
             nombre: "Playdead",
             enlace: "https://playdead.com"
         },
-        video: "https://www.youtube.com/watch?v=YoHg1I7zU1g",
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/17000/inside/"]
-        ],
         favorito: false,
-        votos: 0
+        votos: 0,
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/17000/inside/"
+        }
     },
     {
         id: 18,
@@ -456,12 +437,11 @@ const juegos = [
             nombre: "Team Cherry",
             enlace: "https://www.teamcherry.com.au"
         },
-        video: "https://www.youtube.com/watch?v=UAO2urG23S4",
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/18000/hollow-knight/"]
-        ],
         favorito: false,
-        votos: 0
+        votos: 0,
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/18000/hollow-knight/"
+        }
     },
     {
         id: 19,
@@ -484,12 +464,11 @@ const juegos = [
             nombre: "Witch Beam",
             enlace: "https://www.unpackinggame.com"
         },
-        video: "https://www.youtube.com/watch?v=RLRIDv7A0bA",
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/19000/unpacking/"]
-        ],
         favorito: false,
-        votos: 0
+        votos: 0,
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/19000/unpacking/"
+        }
     },
     {
         id: 20,
@@ -512,11 +491,10 @@ const juegos = [
             nombre: "Jonathan Blow",
             enlace: "https://the-witness.net"
         },
-        video: "https://www.youtube.com/watch?v=brdZ3gV4sZQ",
-        disponibleEn: [
-            ["Steam", "https://store.steampowered.com/app/20000/the-witness/"]
-        ],
         favorito: false,
-        votos: 0
+        votos: 0,
+        disponibleEn: {
+            Steam: "https://store.steampowered.com/app/20000/the-witness/"
+        }
     }
 ];

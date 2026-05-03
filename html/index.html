@@ -1,5 +1,3 @@
-
-<!-- github token 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 -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,61 +19,32 @@
             <li><a href="catalogo.html">Catálogo</a></li>
             <li><a href="sugerencias.html">Sugerencias</a></li>
         </ul>
-        <button>light_mode</button>
     </nav>
 
 <!-- MAIN -->
     <main>
         <!-- SLIDER -->
         <section id="slider-section">
-            <div id="slide"></div>
+            <div class="slide-contenido"></div>
+            <div class="slide-contenido"></div>
         </section>
 
-        <!-- COMO FUNCIONA -->
-        <section class="contenedor">
-            <h2>¿Cómo funciona?</h2>
-            <div class="pasos">
-                <article class="paso">
-                    <p>Elegí un estado de ánimo o duración</p>
-                </article>
-                <article class="paso">
-                    <p>Explorá los juegos que coincidan con tu elección</p>
-                </article>
-                <article class="paso">
-                    <p>Mirá videos, leé descripciones y descubrí dónde jugarlos</p>
-                </article>
-            </div>
+        <!-- juegos mas votados -->
+        <section id="mas-votados" class="contenedor">
+            <h2>Top 5!:</h2>
+            <div class="contenedor-cards" id="cards-mas-votados"></div>
         </section>
 
-        <!-- JUEGOS DESTACADOS -->
-        <section id="contenedor-juegos-destacados" class="contenedor">
-            <h2>los más votados</h2>
-            <div id="juegos-destacados"></div>
-        </section>
-
-        <!-- JUEGOS FAVORITOS-->
-        <section id="contenedor-juegos-favoritos" class="contenedor">
-            <h2>Tus favoritos</h2>
-            <button id="btn-fav-izquierda">⬅️</button>
-            <div id="juegos-favoritos"></div>
-            <button id="btn-fav-derecha">➡️</button>
+        <!-- juegos aleatorios -->
+        <section id="juegos-aleatorios" class="contenedor">
+            <h2>Te podría interesar:</h2>
+            <div class="contenedor-cards" id="cards-aleatorios"></div>
         </section>
 
     </main>
 
     <!-- FOOTER -->
     <footer>
-        <div class="mapa-sitio">
-            <h4>Mapa del sitio</h4>
-            <a href="index.html">Home</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="sugerencias.html">Sugerencias</a>
-        </div>
-        <div class="repositorio">
-            <h4>Repositorio</h4>
-            <a href="https://github.com/facundoCastilloUy/PW-Obligatorio1" target="_blank">GitHub</a>
-        </div>
-
         <div class="creditos">
             <p>&copy; 2025 | PW Obligatorio 1 | Catálogo de Videojuegos</p>
             <p>Desarrollado por Facundo Castillo · N° de estudiante: 159990</p>
@@ -83,9 +52,11 @@
         </div>
     </footer>
 
-    <!-- <script src="js/helpers.js"></script> -->
-    <script src="../js/data.js"></script>
-    <script src="../js/codigo.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/helpers.js"></script>
+<script src="../js/catalogo.js"></script>
+<script src="../js/home.js"></script>
+
 
 </body>
 
